@@ -39,10 +39,9 @@ export async function googleOAuth(data, ctx = null) {
         const { token, data: user } = response.data;
 
         setCookie(ctx, "shopflow_session", JSON.stringify({ user: user, token }), {
-            maxAge: 30 * 24 * 60 * 60, // 30 days
+            maxAge: 30 * 24 * 60 * 60,
             path: '/',
             secure: process.env.NODE_ENV === 'production',
-            httpOnly: true, 
             sameSite: 'lax',
         });
 
@@ -182,7 +181,7 @@ export async function updateProfileInfo(token,userId,data){
 }
 catch(err){
     console.log(err);
-    
+    throw err;   
 }
 }
 

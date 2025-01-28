@@ -6,7 +6,7 @@ import {
   addAddress,
   updateAddress,
   removeAddress,
-} from "../../../_service/UserService"; // Adjust the path as needed
+} from "../../../../_service/UserService"; // Adjust the path as needed
 import { useSelector } from "react-redux";
 
 const AddressManagement = () => {

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { subCategoryProducts } from '@/app/(application)/_service/ProductService'; // Adjust the import path as necessary
+import { subCategoryProducts } from '@/app/_service/ProductService'; // Adjust the import path as necessary
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { setProductData } from '../_lib/utilReducer';

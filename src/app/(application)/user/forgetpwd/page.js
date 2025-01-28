@@ -1,5 +1,5 @@
 "use client"
-import { forgotPassword } from "@/app/(application)/_service/UserService";
+import { forgotPassword } from "@/app/_service/UserService";
 import React, { useState } from "react";
 
 const ForgotPasswordEmail = () => {

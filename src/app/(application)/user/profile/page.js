@@ -1,5 +1,5 @@
 "use client";
-import { getProfileInfo } from "@/app/(application)/_service/UserService";
+import { getProfileInfo } from "@/app/_service/UserService";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
@@ -82,7 +82,7 @@ const UserProfile = () => {
         <div className="bg-gray-100 p-4 rounded-lg shadow col-span-2">
           <h3 className="text-lg font-semibold text-gray-800">Edit address</h3>
           <p className="text-gray-600">Update your addresses</p>
-          <Link href="/user/profile/address" className="mt-2 text-blue-500 hover:underline">Edit Profile</Link>
+          <Link href="/user/profile/address" className="mt-2 text-blue-500 hover:underline">Edit Address</Link>
         </div>
         
       </div>

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import ProductCard from "../../_components/ProductCard";
-import { getFilteredProducts, getProducts, getSearchedProduct } from "../_service/ProductService";
+import { getFilteredProducts, getProducts, getSearchedProduct } from "../../_service/ProductService";
 import Pagination from "../../_components/Pagination"; 
 
 export default function Products(props) {

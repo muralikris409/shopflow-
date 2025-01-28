@@ -5,9 +5,9 @@ import { signIn, useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSession } from "../../_lib/sessionReducer";
 import { useRouter } from "next/navigation";
-import { googleOAuth, login, signUp } from "@/app/(application)/_service/UserService";
+import { googleOAuth, login, signUp } from "@/app/_service/UserService";
 import Link from "next/link";
-import UserCartService from "@/app/(application)/_service/UserCartService";
+import UserCartService from "@/app/_service/UserCartService";
 import { setCookie, parseCookies } from 'nookies';
 
 const AuthForm = () => {
@@ -88,7 +88,6 @@ const AuthForm = () => {
         console.log(response)
 
         syncUser();
-        // Redirect based on historyRoute
         if (historyRoute) {
           historyRoute.includes("product") ? router.push(`${historyRoute}`) : router.push("/cart");
         } else {

@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { useEffect,useState } from 'react';
-import { loadWishlist, removeProductFromWishlist } from '../_service/WishListService';
+import { loadWishlist, removeProductFromWishlist } from '../../_service/WishListService';
 import { useDispatch, useSelector } from 'react-redux';
-import { addOrRemoveProductFromWishlist } from '../_service/WishListService';
+import { addOrRemoveProductFromWishlist } from '../../_service/WishListService';
 import Link from 'next/link';
 import { setProductData } from '../../_lib/utilReducer';
 import { useRouter } from 'next/navigation';

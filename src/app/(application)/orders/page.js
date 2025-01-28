@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getOrderByUserId, cancelOrder } from "../_service/OrderService";
+import { getOrderByUserId, cancelOrder } from "../../_service/OrderService";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setProductData } from "../../_lib/utilReducer";
@@ -11,7 +11,7 @@ const ProductTile = ({ product, onCancel, cancelLoading }) => {
   const dispatch = useDispatch();
 
   const handleNavigation = () => {
-    dispatch(setProductData({ id: product.orderId }));
+    dispatch(setProductData({ id: product.productId }));
     router.push(`/product/${product.productName}`);
   };
 

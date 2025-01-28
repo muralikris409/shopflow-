@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateFilter, resetFilter } from "../_lib/genericReducer";
-import { getCategory } from "../(application)/_service/ProductService";
+import { getCategory } from "../_service/ProductService";
 import { FaTimes } from "react-icons/fa";
 
 function Filter() {

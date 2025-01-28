@@ -173,7 +173,6 @@ export default function UserMenu() {
       }
     }
   };
-
   const toggleDropdown = () => {
     setIsOpen((prevState) => !prevState);
   };
@@ -221,20 +220,14 @@ export default function UserMenu() {
       >
         <div className="flex items-center">
           <div className="w-8 h-8 rounded-full overflow-hidden bg-gray-500 flex justify-center items-center mr-2">
-            {user ? (
-              user?.googleId ? (
-                <img
-                  src={session?.user?.image || '/_assets/user.png'}
-                  alt="User Profile"
-                  className="w-full h-full object-cover"
-                />
-              ) : (
+           
+              {user?.image ?(
                 <img
                   src={user?.profile_pic || '/_assets/user.png'}
                   alt="User Profile"
                   className="w-full h-full object-cover"
                 />
-              )
+              
             ) : (
               <FaUserCircle className="text-white text-3xl" />
             )}

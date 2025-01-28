@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { subCategoryProducts, getFilteredProducts } from "@/app/(application)/_service/ProductService";
+import { subCategoryProducts, getFilteredProducts } from "@/app/_service/ProductService";
 import SubcategoryCard from "@/app/_components/SubcategoryCard";
 import Link from "next/link";
 import ProductCard from "@/app/_components/ProductCard";

@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import VerticalNavBar from "./_components/VerticalNavBar";
 import { makeStore } from "./_lib/store";
 import StoreProvider from "./_lib/StoreProvider";
-import SessionWrapper from "./(application)/_provider/SessionProvider";
+import SessionWrapper from "./_provider/SessionProvider";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],

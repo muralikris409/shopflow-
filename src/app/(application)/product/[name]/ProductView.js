@@ -1,11 +1,11 @@
   "use client";
-  import { addProduct } from '@/app/(application)/_service/GuestCartService';
+  import { addProduct } from '@/app/_service/GuestCartService';
   import React, { useState } from 'react';
   import { useDispatch, useSelector } from 'react-redux';
-  import UserCartService from "../../_service/UserCartService";
-  import { addOrRemoveProductFromWishlist } from '@/app/(application)/_service/WishListService';
+  import UserCartService from "../../../_service/UserCartService";
+  import { addOrRemoveProductFromWishlist } from '@/app/_service/WishListService';
   import { useRouter } from 'next/navigation';
-  import { createOrder } from '@/app/(application)/_service/OrderService';
+  import { createOrder } from '@/app/_service/OrderService';
 import SimilarProducts from '@/app/_components/SimilarProducts';
 import { setHistory, setProductData } from '@/app/_lib/utilReducer';
 
@@ -45,8 +45,7 @@ import { setHistory, setProductData } from '@/app/_lib/utilReducer';
     const handleNavigation = (order) => {
       const data = { orders: order };
       dispatch(setProductData({orders:{...data}}))
-      
-      router.push(`/checkout`);
+      router.push(`/checkout/${order?.order?.id}`);
     };
 
     const handleBuy = async () => {
@@ -72,10 +71,10 @@ import { setHistory, setProductData } from '@/app/_lib/utilReducer';
       try {
         if (isLoggedIn) {
           const response = await userCartService.addItemToCart(isLoggedIn.id, id);
-          if (response.status === 200 || response.status === 201) {
-            showMessage('Product added to your cart!', 'success');
-          } else {
-            showMessage(response.message || 'Failed to add product to cart. Please try again.', 'error');
+          if (response) {
+            showMessage(response.message ||'Product added to your cart!', 'success');}
+          else {
+            showMessage('Failed to add product to cart. Please try again.', 'error');
           }
         } else {
           addProduct(product);

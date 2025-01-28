@@ -1,7 +1,9 @@
 "use client";
 import { useState, useEffect } from "react";
-import { getProfileInfo, updateProfileInfo } from "@/app/(application)/_service/UserService"; 
+import { getProfileInfo, updateProfileInfo } from "@/app/_service/UserService"; 
 import { useSelector } from "react-redux";
+import Cookies from "js-cookie";
+
 const EditProfile = () => {
   const userId = useSelector((state) => state?.session?.user?.id);
   const token = useSelector((state) => state?.session?.token);
@@ -62,21 +64,32 @@ const EditProfile = () => {
     setLoading(true);
     setError(null);
 
-    try {
-      const response = await updateProfileInfo(token, userId, formData); // Assume updateProfileInfo handles the PUT request
-     console.log(response)
-    //  setImagePreview(response?.data?.data?.profile_pic)
-        alert("Profile updated successfully!");
-        const newData={...userData,...response?.data.data};
-        localStorage.setItem("shopflow_session",JSON.stringify({user:{...newData},token}));
 
+    try {
+      const response = await updateProfileInfo(token, userId, formData);
+    
+      if (response.status === 200) {
+        console.log(response);
+        alert("Profile updated successfully!");
+        const newData = { ...userData, ...response?.data?.data };
+        Cookies.set("shopflow_session", JSON.stringify({ user: { ...newData }, token }), {
+          expires: 7,
+          secure: true,
+          sameSite: "Strict",
+        });
+
+      } 
       
-    } catch (err) {
-      setError("Failed to update profile.");
-      console.error(err);
-    } finally {
+   
       setLoading(false);
+
+    } catch (error) {
+      setLoading(false);
+     
+      console.error(error);
+      alert(`An error occurred: ${error.response.data.message}`);
     }
+    
   };
 
   return (

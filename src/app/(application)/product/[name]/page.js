@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { getProductByID } from "@/app/(application)/_service/ProductService";
+import { getProductByID } from "@/app/_service/ProductService";
 import ProductView from "./ProductView";
 import { useSelector } from "react-redux";
 import Cookies from "js-cookie"; // Import the js-cookie library

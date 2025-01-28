@@ -8,7 +8,7 @@ export default function Footer() {
       
 
         <div className="mt-8 text-center text-sm">
-          © 2006-2024 ShopFlow. <a href="#" className="hover:text-orange-500">Terms</a> | <a href="#" className="hover:text-orange-500">Privacy</a> | <a href="#" className="hover:text-orange-500">Specialized Affairs</a>
+          © 2006-2024 ShopFlow. 
         </div>
       
     </footer>

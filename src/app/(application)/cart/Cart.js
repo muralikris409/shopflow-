@@ -6,11 +6,11 @@ import {
   getCart as guestGetCart,
   increaseQuantity as guestIncreaseQuantity,
   removeProduct as guestRemoveProduct,
-} from '../_service/GuestCartService';
-import UserCartService from '../_service/UserCartService';
+} from '../../_service/GuestCartService';
+import UserCartService from '../../_service/UserCartService';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { createOrder } from '../_service/OrderService';
+import { createOrder } from '../../_service/OrderService';
 import { setProductData } from '../../_lib/utilReducer';
 import { setHistory } from '../../_lib/utilReducer';
 const Cart = () => {
@@ -111,12 +111,8 @@ const Cart = () => {
         quantity: product.quantity,
       }));
       const {order } = await createOrder(isLoggedIn.id, items);
-      console.log(order)
-      const data = {
-        orders: order
-      };
-      dispatch(setProductData({orders:{...data}}))
-      router.push(`/checkout`);
+   
+      router.push(`/checkout/${order.id}`);
     } catch (err) {
       console.error(err);
       setError('Failed to proceed with checkout. Please try again later.');

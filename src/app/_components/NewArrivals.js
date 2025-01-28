@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from 'react';
-import { getNewArrivals } from '../(application)/_service/ProductService';
+import { getNewArrivals } from '../_service/ProductService';
 import { useRouter } from 'next/navigation';
 import { useDispatch } from 'react-redux';
 import { setProductData } from '../_lib/utilReducer';

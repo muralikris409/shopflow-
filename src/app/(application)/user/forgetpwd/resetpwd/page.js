@@ -1,5 +1,5 @@
 "use client";
-import { resetPassword } from "@/app/(application)/_service/UserService";
+import { resetPassword } from "@/app/_service/UserService";
 import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { Suspense } from 'react';

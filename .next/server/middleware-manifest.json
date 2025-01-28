@@ -3,47 +3,46 @@
   "middleware": {
     "/": {
       "files": [
-        "server/edge/chunks/_e2fc67._.js",
-        "server/edge/chunks/[root of the server]__defe9d._.js",
-        "server/edge/chunks/edge-wrapper_f2e72e.js"
+        "server/edge-runtime-webpack.js",
+        "server/src/middleware.js"
       ],
-      "name": "middleware",
+      "name": "src/middleware",
       "page": "/",
       "matchers": [
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/orders(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/orders(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\.json)?[\\/#\\?]?$",
           "originalSource": "/orders/:path*"
         },
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/checkout(\\\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/checkout(\\.json)?[\\/#\\?]?$",
           "originalSource": "/checkout"
         },
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/checkout(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/checkout(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\.json)?[\\/#\\?]?$",
           "originalSource": "/checkout/:path*"
         },
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/wishlist(\\\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/wishlist(\\.json)?[\\/#\\?]?$",
           "originalSource": "/wishlist"
         },
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/user(?:\\/([^\\/#\\?]+?))(\\\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/user(?:\\/([^\\/#\\?]+?))(\\.json)?[\\/#\\?]?$",
           "originalSource": "/user/:path"
         }
       ],
       "wasm": [],
       "assets": [],
       "env": {
-        "__NEXT_BUILD_ID": "development",
+        "__NEXT_BUILD_ID": "EIVUTQfPF2m3LZ0vHOq2J",
         "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "aszMCUT5118ROXR5Nseu05Jhl30lPlo/yu7G7iygWdA=",
-        "__NEXT_PREVIEW_MODE_ID": "319809545a7b663a01146b26a7616cd7",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "8b4da2da4c4c720e8f4bd46c1bb3ca610254ddfaa6d3f740261acee7ee9495c9",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "8799bd47dad4b6ebf7885bf98867908494b29f8fbe354bd3205c416e733c9e27"
+        "__NEXT_PREVIEW_MODE_ID": "5aa4010d50fab2e03dff8a88643e75c6",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "2d597933803da6e5850bf61a2797a927931a7bd2add745125443903f6c2b5f08",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "b1e34028beb985f5e43ad633aab03c3a0160c12743c838e5b486e291e9398602"
       }
     }
   },
+  "functions": {},
   "sortedMiddleware": [
     "/"
-  ],
-  "functions": {}
+  ]
 }
