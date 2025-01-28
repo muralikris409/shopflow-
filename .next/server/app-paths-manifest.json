@@ -1,11 +1,4 @@
 {
-  "/icon.png/route": "app/icon.png/route.js",
-  "/(application)/product/[name]/page": "app/(application)/product/[name]/page.js",
-  "/(application)/checkout/[checkout_val]/page": "app/(application)/checkout/[checkout_val]/page.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/(application)/checkout/page": "app/(application)/checkout/page.js",
-  "/(application)/cart/page": "app/(application)/cart/page.js",
-  "/(application)/orders/success/page": "app/(application)/orders/success/page.js"
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
 }
