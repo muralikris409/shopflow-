@@ -1,0 +1,7 @@
+{
+  "headers": {
+    "x-nextjs-stale-time": "4294967294",
+    "x-nextjs-prerender": "1",
+    "x-next-cache-tags": "_N_T_/layout,_N_T_/(application)/layout,_N_T_/(application)/user/layout,_N_T_/(application)/user/forgetpwd/layout,_N_T_/(application)/user/forgetpwd/resetpwd/layout,_N_T_/(application)/user/forgetpwd/resetpwd/page,_N_T_/user/forgetpwd/resetpwd"
+  }
+}
