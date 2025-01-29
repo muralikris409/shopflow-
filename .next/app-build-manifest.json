@@ -51,7 +51,7 @@
       "static/chunks/651-a3b1d7b8c04cfaab.js",
       "static/chunks/391-5cc82c3b349f661e.js",
       "static/chunks/718-8f54b28e3766fc65.js",
-      "static/chunks/app/(application)/checkout/[orderId]/page-4d289defd8af8ba2.js"
+      "static/chunks/app/(application)/checkout/[orderId]/page-0a1f6cc844c0d594.js"
     ],
     "/(application)/cart/page": [
       "static/chunks/webpack-15bef6ab6aefcd66.js",
@@ -62,6 +62,17 @@
       "static/chunks/391-5cc82c3b349f661e.js",
       "static/chunks/943-8a8164ab60390e3b.js",
       "static/chunks/app/(application)/cart/page-abe06317431ab326.js"
+    ],
+    "/(application)/orders/success/page": [
+      "static/chunks/webpack-15bef6ab6aefcd66.js",
+      "static/chunks/4bd1b696-c1da1ec18effd548.js",
+      "static/chunks/517-6f4e63083d8a9cbe.js",
+      "static/chunks/main-app-bd6d051952489bd4.js",
+      "static/chunks/651-a3b1d7b8c04cfaab.js",
+      "static/chunks/391-5cc82c3b349f661e.js",
+      "static/chunks/943-8a8164ab60390e3b.js",
+      "static/chunks/173-9bf3c54a2ccb0e71.js",
+      "static/chunks/app/(application)/orders/success/page-0089af277c45b70e.js"
     ],
     "/(application)/orders/page": [
       "static/chunks/webpack-15bef6ab6aefcd66.js",
@@ -82,17 +93,6 @@
       "static/chunks/391-5cc82c3b349f661e.js",
       "static/chunks/943-8a8164ab60390e3b.js",
       "static/chunks/app/(application)/product/[name]/page-813e874851a1f610.js"
-    ],
-    "/(application)/orders/success/page": [
-      "static/chunks/webpack-15bef6ab6aefcd66.js",
-      "static/chunks/4bd1b696-c1da1ec18effd548.js",
-      "static/chunks/517-6f4e63083d8a9cbe.js",
-      "static/chunks/main-app-bd6d051952489bd4.js",
-      "static/chunks/651-a3b1d7b8c04cfaab.js",
-      "static/chunks/391-5cc82c3b349f661e.js",
-      "static/chunks/943-8a8164ab60390e3b.js",
-      "static/chunks/173-9bf3c54a2ccb0e71.js",
-      "static/chunks/app/(application)/orders/success/page-0089af277c45b70e.js"
     ],
     "/(application)/user/forgetpwd/page": [
       "static/chunks/webpack-15bef6ab6aefcd66.js",

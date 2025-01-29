@@ -7,7 +7,7 @@ import { fetchUserAddresses, addAddress } from '../../../_service/UserService';
 import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
 
-const OrderSummary = ({ title ,totalBill,orderId}) => {
+const OrderSummary = ({ title ,orderId}) => {
   const router = useRouter();
   const userId = useSelector((state) => state.session.user?.id);
 
@@ -20,6 +20,7 @@ const OrderSummary = ({ title ,totalBill,orderId}) => {
   const [addresses, setAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [totalBill,setTotalBill]=useState();
   const token = useSelector(state => state?.session?.token);
   const [newAddress, setNewAddress] = useState({
     street: '',
@@ -61,6 +62,7 @@ const OrderSummary = ({ title ,totalBill,orderId}) => {
       console.log(result);
       if (result.status === "success") {
         setOrderData(result.data.items);
+        setTotalBill(result.data.totalAmount);
       } else {
         console.error(result?.message || "Error fetching order data");
       }
@@ -151,11 +153,11 @@ const OrderSummary = ({ title ,totalBill,orderId}) => {
         order_id: razorpayOrder?.id,
         handler: async function (response) {
           const { razorpay_payment_id, razorpay_signature, razorpay_order_id } = response;
-
+          console.log("textoid",orderId,orderData)
           try {
             setLoading(true);
             const verificationResult = await verifyPaymentAndUpdateOrder(
-              orderData.id,
+              orderId,
               razorpay_order_id,
               razorpay_payment_id,
               razorpay_signature
@@ -163,7 +165,7 @@ const OrderSummary = ({ title ,totalBill,orderId}) => {
             setLoading(false);
 
             if (verificationResult.success) {
-              Cookies.set("orderId", orderData.id);
+              Cookies.set("orderId", orderId);
               router.push(`/orders/success`);
             } else {
               setError('Payment verification failed. Please try again.');
@@ -306,7 +308,7 @@ const OrderSummary = ({ title ,totalBill,orderId}) => {
               <div className="ml-4">
                 <h3 className="text-sm font-medium text-gray-800">{item.product?.name}</h3>
                 <p className="text-sm text-gray-500">{item.product?.description}</p>
-                <p className="text-sm font-bold text-gray-800">${item.product?.offerPrice}</p>
+                <p className="text-sm font-bold text-gray-800">${item.product?.offerPrice} x {item.quantity}</p>
               </div>
             </div>
           ))}
