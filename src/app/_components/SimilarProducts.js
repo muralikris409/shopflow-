@@ -26,8 +26,7 @@ const SimilarProducts = ({ subCategoryId }) => {
   }, [subCategoryId]);
    const handleNavigation=(product)=>{
         
-      dispatch(setProductData({id:product.id}));
-      router.push(`/product/${product.name}`);
+      router.push(`/product/${product.id}`);
       }
   if (loading) {
     return <div className="text-center">Loading...</div>;

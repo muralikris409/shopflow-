@@ -1,13 +1,8 @@
- import { useDispatch } from "react-redux";
-import { Carousel } from "./_components/Carousel";
-import Header from "./_components/header/Header";
+import { Carousel, CustomCarousel } from "./_components/Carousel";
 import ProductCard from "./_components/ProductCard";
-import { fetchData } from "./_lib/categoryReducer";
-// import { getProducts } from "./data/ProductService";
-import Products from "./(application)/products/Products";
+
 import ProductCarousel from "./_components/ProductCarousel";
 import {getClearanceSaleProducts, getFlashDeals, getLimitedTimeOffers, getProducts, getTrendingProducts } from "./_service/ProductService";
-import FlashDeal from "./_components/Deals"; 
 import Deals from "./_components/Deals";
 import NewArrivals from "./_components/NewArrivals";
 import ViewAllProductsButton from "./_components/ViewAllProducts";
@@ -31,7 +26,7 @@ export default async function Home()  {
     <BannerSection />
   </div>
   <div className="w-full p-5 bg-white rounded-lg shadow-md">
-    <Carousel />
+    <CustomCarousel />
   </div>
 </div>
 <div>

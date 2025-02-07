@@ -1,15 +1,21 @@
 import { configureStore } from '@reduxjs/toolkit';
-import apiReducer from './categoryReducer'; 
+import categoryReducer from './categoryReducer'; 
 import genericReducer from './genericReducer';
-import sessionReducer from "../_lib/sessionReducer"
+import sessionReducer from "../_lib/sessionReducer";
 import utilReducer from "../_lib/utilReducer";
+import productReducer from "./productReducer";
+import userReducer from "./userReducer";
+import cartReducer from "./cartReducer";
 export const makeStore = () => {
   return configureStore({
     reducer: {
-      api: apiReducer, 
+      categories: categoryReducer, 
       generic:genericReducer,
       session: sessionReducer,
       utils:utilReducer,
+      userData:userReducer,
+      product:productReducer,
+      cart:cartReducer,
     },
   });
 };

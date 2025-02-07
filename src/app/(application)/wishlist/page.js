@@ -1,85 +1,79 @@
 'use client';
 
-import React from 'react';
-import { useEffect,useState } from 'react';
-import { loadWishlist, removeProductFromWishlist } from '../../_service/WishListService';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addOrRemoveProductFromWishlist } from '../../_service/WishListService';
-import Link from 'next/link';
-import { setProductData } from '../../_lib/utilReducer';
 import { useRouter } from 'next/navigation';
+import { loadWishlist, addOrRemoveProductFromWishlist } from '../../_service/WishListService';
+import { setProductData } from '../../_lib/utilReducer';
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { X, Star } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
+
 const Wishlist = () => {
   const [products, setProducts] = useState([]);
-  
   const [error, setError] = useState(null);
   const userId = useSelector((state) => state.session.user?.id);
-  const token = useSelector((state) => state.session.token);    
-
-  
+  const token = useSelector((state) => state.session.token);
+  const { toast } = useToast();
 
   useEffect(() => {
     const fetchWishlist = async () => {
       try {
         if (userId) {
           const wishlistProducts = await loadWishlist(userId, token);
-          console.log("wishlist:",wishlistProducts);
-
           setProducts(wishlistProducts);
         }
       } catch (err) {
         setError('Failed to load wishlist. Please try again later.');
+        toast({
+          variant: "destructive",
+          title: "Error",
+          description: "Failed to load wishlist. Please try again later.",
+        });
       }
     };
 
     fetchWishlist();
-  }, [userId, token]);
+  }, [userId, token, toast]);
 
   const handleRemoveProduct = async (productId) => {
-    console.log(products);
     try {
       if (userId) {
         setProducts((prevProducts) => prevProducts.filter((product) => product.productId !== productId));
         await addOrRemoveProductFromWishlist(userId, productId, token);
+        toast({
+          title: "Success",
+          description: "Product removed from wishlist successfully.",
+        });
       }
     } catch (err) {
       setError('Failed to remove product from wishlist. Please try again later.');
-      console.log(err)
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "Failed to remove product from wishlist. Please try again later.",
+      });
     }
   };
 
   return (
-    <section className="h-1/3 bg-gray-100 py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-center">
-          {
-            (products.length > 0) ?
-            <h1 className="text-2xl font-semibold text-gray-900">Your Wishlist</h1> :
-            <h1 className="text-2xl font-semibold text-gray-900">Your Wishlist is empty</h1>
-          }
-        </div>
+    <section className="w-full h-screen mx-auto p-2 md:p-4 bg-white rounded-lg shadow-md">
+      <div className="container mx-auto">
+        <h2 className="text-3xl font-semibold text-gray-800 mb-6">{products.length > 0 ? 'Your Wishlist' : 'Your Wishlist is empty'}</h2>
 
         {error && (
-          <div className="text-center text-red-500 mt-4">
-            {error}
-          </div>
+          <div className="text-center text-red-500 mt-4">{error}</div>
         )}
 
-        <div className="mx-auto mt-8 max-w-2xl md:mt-12">
-          <div className="bg-white shadow">
-            <div className="px-4 py-6 sm:px-8 sm:py-10">
-              <div className="flow-root">
-                <ul className="-my-8">
-                  {products.map((product, index) => (
-                    <WishlistTile
-                      key={index}
-                      product={product.product}
-                      onRemoveProduct={handleRemoveProduct}
-                    />
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
+        <div className="m-2  grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          {products.map((product, index) => (
+            <WishlistTile
+              key={index}
+              product={product.product}
+              onRemoveProduct={handleRemoveProduct}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -89,56 +83,41 @@ const Wishlist = () => {
 export default Wishlist;
 
 function WishlistTile({ product, onRemoveProduct }) {
-  const router=useRouter();
+  const router = useRouter();
+  const dispatch = useDispatch();
 
-  const dispatch=useDispatch();
-  const handleNavigation=()=>{
-    
-  dispatch(setProductData({id:product.id}));
-  router.push(`/product/${product.name}`);
+  const handleNavigation = () => {
+    router.push(`/product/${product.id}`);
+  };
 
-  }
   return (
-    <li  className="flex flex-col space-y-3 py-6 text-left sm:flex-row sm:space-x-5 sm:space-y-0">
-      <div className="shrink-0">
-        <img className="h-24 w-24 max-w-full rounded-lg object-cover" src={product.image||"/_assets/image.png"} alt={product.name} />
+    <Card className="overflow-hidden hover:scale-105 transition-transform bg-white shadow-xl rounded-lg">
+      <div className="relative">
+        <img className="h-48 w-full object-cover rounded-t-lg" src={product.image || "/_assets/image.png"} alt={product.name} />
+        <Button
+          variant="ghost"
+          className="absolute top-2 right-2 bg-white p-2 rounded-full shadow-md hover:bg-gray-100"
+          onClick={() => onRemoveProduct(product.id)}
+        >
+          <X className="h-5 w-5 text-gray-600" />
+        </Button>
       </div>
-
-      <div className="relative flex flex-1 flex-col justify-between">
-        <div className="sm:col-gap-5 sm:grid sm:grid-cols-2">
-          <div onClick={handleNavigation} className="pr-8 sm:pr-5">
-            <p className="text-base font-semibold text-gray-900">{product.name}</p>
-            <p className="text-sm text-gray-500">Brand: {product.brand}</p>
-            <p className="text-sm text-gray-500">{product.description}</p>
-            <div className="flex items-center space-x-2">
-              <p className="text-sm text-gray-500 line-through">${product.actualPrice}</p>
-              <p className="text-sm text-orange-500">${product.offerPrice}</p>
-              <p className="text-sm text-green-500">({product.discountPercentage}% off)</p>
-            </div>
-            <p className="text-sm text-gray-500">Rating: {product.rating} / 5</p>
-          </div>
+        <CardTitle className="ml-6 cursor-pointer text-lg font-semibold hover:text-blue-600" onClick={handleNavigation}>
+          {product.name}
+        </CardTitle>
+      <CardContent>
+        <p className="text-sm text-gray-500">Brand: {product.brand}</p>
+        <p className="text-sm text-gray-500">{product.description}</p>
+        <div className="flex items-center space-x-2 ">
+          <p className="text-sm text-gray-500 line-through">${product.actualPrice}</p>
+          <p className="text-lg text-orange-500 font-semibold">${product.offerPrice}</p>
+          <p className="text-sm text-green-500">({product.discountPercentage}% off)</p>
         </div>
-
-        <div className="absolute top-0 right-0 flex sm:bottom-0 sm:top-auto">
-          <button
-            onClick={() => onRemoveProduct(product.id)}
-            type="button"
-            className="flex rounded p-2 text-center text-gray-500 transition-all duration-200 ease-in-out focus:shadow hover:text-gray-900"
-          >
-            <svg
-              className="h-5 w-5"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+        <div className="flex items-center mt-2">
+          <Star className="h-5 w-5 text-yellow-500" />
+          <p className="text-sm text-gray-500 ml-1">{product.rating} / 5</p>
         </div>
-      </div>
-    </li>
+      </CardContent>
+    </Card>
   );
 }
-
-

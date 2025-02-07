@@ -11,8 +11,7 @@ const NewArrivals = () => {
     const dispatch=useDispatch();
      const handleNavigation=(product)=>{
         
-      dispatch(setProductData({id:product.id}));
-      router.push(`product/${product.name}`);
+      router.push(`product/${product.id}`);
       }
     useEffect(() => {
         async function fetchNewArrivals() {

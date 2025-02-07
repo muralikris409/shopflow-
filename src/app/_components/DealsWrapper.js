@@ -8,11 +8,10 @@ export default function DealsWrapper({children,product}) {
     const dispatch=useDispatch();
        const handleNavigation=(product)=>{
             
-          dispatch(setProductData({id:product.id}));
-          router.push(`product/${product.name}`);
+          router.push(`product/${product.id}`);
           }
   return (
-    <div onClick={()=>handleNavigation(product)}>
+    <div className="overflow-x-hidden" onClick={()=>handleNavigation(product)}>
       {children}
     </div>
   )

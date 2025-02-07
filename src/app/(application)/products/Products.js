@@ -13,7 +13,7 @@ export default function Products(props) {
   const [loading, setLoading] = useState(false); 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  
+  console.log(totalPages);
   useEffect(() => {
     const fetchFilteredProducts = async () => {
       setLoading(true); 
@@ -40,8 +40,8 @@ export default function Products(props) {
   }, [filter, search, currentPage]);
 
   return (
-    <div className="max-w-7xl mx-auto">
-      <div className="w-min-full grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div className="w-full max-h-screen overflow-x-hidden overflow-y-scroll">
+      <div className="max-w-screen grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {loading ? (
           <p>Loading products...</p>
         ) : error ? (
@@ -52,14 +52,15 @@ export default function Products(props) {
           ))
         ) : (
           <p>No products available</p>
-        )}
+        )
+        }
       </div>
       <div className="flex justify-center mt-4">
-        <Pagination 
+        {totalPages>1&&<Pagination 
           currentPage={currentPage} 
           totalPages={totalPages} 
           onPageChange={(page) => setCurrentPage(page)} 
-        />
+        />}
       </div>
     </div>
   );

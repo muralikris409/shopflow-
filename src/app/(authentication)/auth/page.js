@@ -1,6 +1,5 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { FaGoogle } from "react-icons/fa";
 import { signIn, useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSession } from "../../_lib/sessionReducer";
@@ -8,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { googleOAuth, login, signUp } from "@/app/_service/UserService";
 import Link from "next/link";
 import UserCartService from "@/app/_service/UserCartService";
-import { setCookie, parseCookies } from 'nookies';
+import { parseCookies } from 'nookies';
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -104,7 +103,7 @@ const AuthForm = () => {
     } catch (error) {
       setLoading(false);
       console.log(error)
-      setErrors({ form: error.message || "An unexpected error occurred. Please try again." });
+      setErrors({ form: error+"" || "An unexpected error occurred. Please try again." });
       setSuccess(null);
     }
   };
@@ -237,7 +236,7 @@ const AuthForm = () => {
 
         {isLogin && (
           <div className="mt-4">
-            <Link href="user/forgetpwd" className="text-sm text-gray-500 hover:text-orange-500">
+            <Link href="/forgetpwd" className="text-sm text-gray-500 hover:text-orange-500">
               Forgot your password?
             </Link>
           </div>

@@ -1,16 +1,17 @@
 "use client"
 import React, { useState, useEffect } from 'react';
-import Cookies from 'js-cookie'; // Import js-cookie
+import Cookies from 'js-cookie';
 import { createOrder, failedVerify, verifyPayment } from '../../../_service/PaymentService';
 import { checkOutOrder, verifyPaymentAndUpdateOrder, fetchOrderForCheckout } from '../../../_service/OrderService'; // Import the new API method
 import { fetchUserAddresses, addAddress } from '../../../_service/UserService';
 import { useRouter } from 'next/navigation';
 import { useSelector } from 'react-redux';
+import { useToast } from '@/hooks/use-toast';
 
 const OrderSummary = ({ title ,orderId}) => {
   const router = useRouter();
   const userId = useSelector((state) => state.session.user?.id);
-
+  const {toast}=useToast();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const phoneNumber = useSelector(state => state?.session?.user?.phone);
@@ -131,7 +132,7 @@ const OrderSummary = ({ title ,orderId}) => {
       console.error(error);
     }
   };
-
+  console.log(process.env.NEXT_PUBLIC_RZP_KEY)
   const handlePayment = async () => {
     const phoneValidationError = validatePhone();
     if (phoneValidationError || !selectedAddress) {
@@ -143,9 +144,9 @@ const OrderSummary = ({ title ,orderId}) => {
     setError(null);
 
     try {
-      const { razorpayOrder, ...data } = await checkOutOrder(orderId); // Use the fetched order data
+      const { razorpayOrder, ...data } = await checkOutOrder(orderId);
       const options = {
-        key: process.env.NEXT_PUBLIC_RZP_KEY,
+        key: "rzp_test_1gTn0x73jrN12q",
         amount: Math.ceil(totalBill * 100),
         currency: razorpayOrder?.currency,
         name: 'Shopflow',
@@ -168,10 +169,18 @@ const OrderSummary = ({ title ,orderId}) => {
               Cookies.set("orderId", orderId);
               router.push(`/orders/success`);
             } else {
-              setError('Payment verification failed. Please try again.');
+              toast({
+                title: "Payment failed",
+                description: "Payment verification failed. Please try again.",
+                variant: "destructive",
+              })
             }
           } catch (error) {
-            setError('An unexpected error occurred during verification. Please try again.');
+            toast({
+              title: "Payment failed",
+              description: "An unexpected error occurred during verification. Please try again.",
+              variant: "destructive",
+            });
           }
         },
         prefill: {
@@ -184,7 +193,11 @@ const OrderSummary = ({ title ,orderId}) => {
         },
         modal: {
           ondismiss: async () => {
-            setError('Payment was cancelled by the user. Please try again.');
+            toast({
+              title: "Payment failed",
+              description: "Payment was cancelled by the user. Please try again.",
+              variant: "destructive",
+            })
           },
         },
       };

@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { subCategoryProducts, getFilteredProducts } from "@/app/_service/ProductService";
-import SubcategoryCard from "@/app/_components/SubcategoryCard";
 import Link from "next/link";
 import ProductCard from "@/app/_components/ProductCard";
 
@@ -15,7 +14,6 @@ export default function Products({ id }) {
     const fetchFilteredProducts = async () => {
       try {
         let response;
-
         if (filter && filter.selectedCategory) {
           response = await getFilteredProducts(filter);
         } else {
@@ -33,17 +31,16 @@ export default function Products({ id }) {
   }, [filter, id]);
 
   return (
-    <Link href={""} className="container mx-auto p-4">
+    <Link href={""} className="container mx-auto max-h-screen p-4 overflow-x-hidden overflow-y-scroll">
       {error ? (
         <p className="text-red-500 text-center">{error}</p>
       ) : subcategories?.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {subcategories.map((subcategory) => (
-  <Link key={subcategory.id} href={`/product/productname?id=${subcategory.id}`}>
-
-    <ProductCard product={subcategory} />
-            
-</Link>          ))}
+           <Link key={subcategory.id} href={`/product/${subcategory.id}`}>
+                  <ProductCard product={subcategory} />  
+           </Link>
+          ))}
         </div>
       ) : (
         <p className="text-gray-500 text-center">No subcategories available</p>

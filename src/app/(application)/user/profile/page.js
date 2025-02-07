@@ -5,38 +5,15 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const UserProfile = () => {
-  const [user, setUser] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    profileImage: "",
-  });
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
-  const userId = useSelector((state) => state?.session?.user?.id);
-  const token = useSelector((state) => state?.session?.token);
+ 
+   const {user,loading,error,token}=useSelector(state=>state.userData);
+   const userId=user?.id;
 
   useEffect(() => {
-    const fetchProfileInfo = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-        const response = await getProfileInfo(token, userId); 
-        setUser(response.data.data);
-      } catch (err) {
-        setError("Failed to load profile data.");
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (userId && token) {
-      fetchProfileInfo();
-    }
     
-  }, [userId, token]); 
+    
+  }, [user]); 
 
   if (loading) {
     return <div className="text-center">Loading...</div>; // Display loading message or spinner
@@ -64,16 +41,8 @@ const UserProfile = () => {
       </div>
 
       <div className="grid grid-cols-2 gap-4">
-        <div className="bg-gray-100 p-4 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-gray-800">Orders</h3>
-          <p className="text-gray-600">View your past orders</p>
-          <Link href="/orders" className="mt-2 text-blue-500 hover:underline">View Orders</Link>
-        </div>
-        <div className="bg-gray-100 p-4 rounded-lg shadow">
-          <h3 className="text-lg font-semibold text-gray-800">Wishlist</h3>
-          <p className="text-gray-600">Check your saved items</p>
-          <Link href="/wishlist" className="mt-2 text-blue-500 hover:underline">View Wishlist</Link>
-        </div>
+      
+    
         <div className="bg-gray-100 p-4 rounded-lg shadow col-span-2">
           <h3 className="text-lg font-semibold text-gray-800">Edit Profile</h3>
           <p className="text-gray-600">Update your information</p>

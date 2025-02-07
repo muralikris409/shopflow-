@@ -23,7 +23,7 @@ const CarouselItem = React.memo(({ item, isActive, onClick }) => {
     );
 });
 
-export const Carousel = () => {
+export const CustomCarousel = () => {
     const router = useRouter();
     const dispatch = useDispatch(); // Initialize dispatch
     const [items, setItems] = useState([]);
@@ -31,7 +31,6 @@ export const Carousel = () => {
 
     function handleNavigate (type, id) {
         if (type === "PRODUCT") {
-            dispatch(setProductData({ id })); 
             router.push(`/product/${id}`);
         } 
         else if(type=="SUBCATEGORY"){

@@ -3,46 +3,47 @@
   "middleware": {
     "/": {
       "files": [
-        "server/edge-runtime-webpack.js",
-        "server/src/middleware.js"
+        "server/edge/chunks/_e2fc67._.js",
+        "server/edge/chunks/[root of the server]__defe9d._.js",
+        "server/edge/chunks/edge-wrapper_f2e72e.js"
       ],
-      "name": "src/middleware",
+      "name": "middleware",
       "page": "/",
       "matchers": [
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/orders(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/orders(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\\\.json)?[\\/#\\?]?$",
           "originalSource": "/orders/:path*"
         },
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/checkout(\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/checkout(\\\\.json)?[\\/#\\?]?$",
           "originalSource": "/checkout"
         },
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/checkout(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/checkout(?:\\/((?:[^\\/#\\?]+?)(?:\\/(?:[^\\/#\\?]+?))*))?(\\\\.json)?[\\/#\\?]?$",
           "originalSource": "/checkout/:path*"
         },
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/wishlist(\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/wishlist(\\\\.json)?[\\/#\\?]?$",
           "originalSource": "/wishlist"
         },
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/user(?:\\/([^\\/#\\?]+?))(\\.json)?[\\/#\\?]?$",
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?\\/user(?:\\/([^\\/#\\?]+?))(\\\\.json)?[\\/#\\?]?$",
           "originalSource": "/user/:path"
         }
       ],
       "wasm": [],
       "assets": [],
       "env": {
-        "__NEXT_BUILD_ID": "rpvSc6Q3xfgJaNv3QlJgM",
+        "__NEXT_BUILD_ID": "development",
         "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "aszMCUT5118ROXR5Nseu05Jhl30lPlo/yu7G7iygWdA=",
-        "__NEXT_PREVIEW_MODE_ID": "c97e0b9d1ddcf448d2a2e743cae3cecb",
-        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "9027235d21b3b0bb851583983b316ed37c5b54a8a63dd863eb9f1268b8a70124",
-        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "87d59cc7954f009daf3468740b975a3ab67f007ebd8abb512ac0175aa96e07a9"
+        "__NEXT_PREVIEW_MODE_ID": "5ae2efb7aa5c4c370fc969add4b303a2",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "7be8b2e24b0ecbf9dc3774effd7ba6e735c412f53a4bf1a075901ee7b5380dff",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "cdc42136749fd67fb0c072ee8de9ba982f1fc462367e3c0afe74e4e17de21bda"
       }
     }
   },
-  "functions": {},
   "sortedMiddleware": [
     "/"
-  ]
+  ],
+  "functions": {}
 }

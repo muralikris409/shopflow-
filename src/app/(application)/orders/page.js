@@ -11,8 +11,7 @@ const ProductTile = ({ product, onCancel, cancelLoading }) => {
   const dispatch = useDispatch();
 
   const handleNavigation = () => {
-    dispatch(setProductData({ id: product.productId }));
-    router.push(`/product/${product.productName}`);
+    router.push(`/product/${product.productId}`);
   };
 
   const handleCancel = () => {
@@ -20,9 +19,9 @@ const ProductTile = ({ product, onCancel, cancelLoading }) => {
   };
 
   return (
-    <div className="product-card p-5 bg-white rounded-lg shadow-lg mb-4">
+    <div className="product-card p-5 bg-white rounded-lg shadow-lg mb-4 w-full sm:w-96 lg:w-full">
       {/* Product Header */}
-      <div className="flex justify-between items-center mb-3">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3">
         <div>
           <h3 className="text-xl font-semibold text-gray-800">
             Order ID: <span className="text-gray-500">#{product.orderId}</span>
@@ -45,7 +44,10 @@ const ProductTile = ({ product, onCancel, cancelLoading }) => {
       </div>
 
       {/* Product Details */}
-      <div onClick={handleNavigation} className="flex items-start space-x-4 mb-4">
+      <div
+        onClick={handleNavigation}
+        className="flex flex-col sm:flex-row items-start space-y-4 sm:space-x-4 mb-4"
+      >
         <img
           src={product.image || "/_assets/image.png"}
           alt={product.productName}
@@ -60,13 +62,13 @@ const ProductTile = ({ product, onCancel, cancelLoading }) => {
       </div>
 
       {/* Footer */}
-      <div className="flex justify-between items-center">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center">
         <p className="font-semibold text-lg">
           Total: $ {(product.offerPrice * product.quantity).toLocaleString()}
         </p>
         {product.status !== "CANCELLED" && (
           <button
-            className={`px-4 py-2 text-white text-sm rounded ${
+            className={`mt-3 sm:mt-0 px-4 py-2 text-white text-sm rounded ${
               cancelLoading === product.orderId
                 ? "bg-gray-400 cursor-not-allowed"
                 : "bg-red-500 hover:bg-red-600"
@@ -81,6 +83,7 @@ const ProductTile = ({ product, onCancel, cancelLoading }) => {
     </div>
   );
 };
+  
 
 const OrderPage = () => {
   const [products, setProducts] = useState([]);
@@ -161,17 +164,18 @@ const OrderPage = () => {
   }
 
   return (
-    <div className="container mx-auto p-6">
-      <h1 className="text-3xl font-bold text-center mb-8">My Orders</h1>
+    <div className="w-full  h-screen mx-auto p-2 md:p-4 bg-white rounded-lg shadow-md overflow-y-scroll overflow-x-hidden ">
 
       {/* Search Bar */}
-      <div className="mb-6 flex justify-center">
+      <div className="mb-6 flex flex-col sm:flex-row justify-between">
+      <h2 className="text-3xl font-semibold text-gray-800 mb-6">My Orders</h2>
+
         <input
           type="text"
           placeholder="Search for products in your orders"
           value={searchQuery}
           onChange={handleSearch}
-          className="w-96 p-3 rounded-md border border-gray-300"
+          className="w-70 sm:w-80 h-1/5 p-3 rounded-md border border-gray-300"
         />
       </div>
 

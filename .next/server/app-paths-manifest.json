@@ -1,20 +1,7 @@
 {
+  "/page": "app/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/icon.png/route": "app/icon.png/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/(application)/checkout/[orderId]/page": "app/(application)/checkout/[orderId]/page.js",
-  "/(application)/cart/page": "app/(application)/cart/page.js",
-  "/(application)/orders/success/page": "app/(application)/orders/success/page.js",
-  "/(application)/orders/page": "app/(application)/orders/page.js",
-  "/(application)/product/[name]/page": "app/(application)/product/[name]/page.js",
-  "/(application)/user/forgetpwd/page": "app/(application)/user/forgetpwd/page.js",
-  "/(application)/user/forgetpwd/resetpwd/page": "app/(application)/user/forgetpwd/resetpwd/page.js",
-  "/(application)/user/profile/address/page": "app/(application)/user/profile/address/page.js",
-  "/(application)/user/profile/manage/page": "app/(application)/user/profile/manage/page.js",
-  "/(application)/user/profile/page": "app/(application)/user/profile/page.js",
-  "/(application)/wishlist/page": "app/(application)/wishlist/page.js",
-  "/(authentication)/auth/page": "app/(authentication)/auth/page.js",
-  "/page": "app/page.js",
-  "/(application)/products/page": "app/(application)/products/page.js",
-  "/(application)/products/subcategory/[id]/page": "app/(application)/products/subcategory/[id]/page.js"
+  "/(application)/user/profile2/page": "app/(application)/user/profile2/page.js",
+  "/(application)/products/page": "app/(application)/products/page.js"
 }

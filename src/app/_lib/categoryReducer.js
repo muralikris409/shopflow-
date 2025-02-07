@@ -2,8 +2,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {axiosInstance} from '../api/axios'; 
 
-const apiSlice = createSlice({
-  name: 'api',
+const categorySlice = createSlice({
+  name: 'category',
   initialState: {
     data: null,
     loading: false,
@@ -26,11 +26,10 @@ const apiSlice = createSlice({
   },
 });
 
-export const { fetchDataStart, fetchDataSuccess, fetchDataFailure } = apiSlice.actions;
+export const { fetchDataStart, fetchDataSuccess, fetchDataFailure } = categorySlice.actions;
 
 export const fetchData = (endpoint) => async (dispatch) => {
   dispatch(fetchDataStart()); 
-
   try {
     const response = await axiosInstance.get(endpoint); 
     dispatch(fetchDataSuccess(response.data));
@@ -39,4 +38,4 @@ export const fetchData = (endpoint) => async (dispatch) => {
   }
 };
 
-export default apiSlice.reducer;
+export default categorySlice.reducer;

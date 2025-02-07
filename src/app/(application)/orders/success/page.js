@@ -171,9 +171,8 @@ const OrderCardComponent = () => {
                 <p className="text-sm text-gray-500">
                   {item.product?.description}
                 </p>
-                <p className="text-sm font-bold text-gray-800">
-                  ${item.product?.offerPrice}
-                </p>
+                <p className="text-sm font-bold text-gray-800">${item.product?.offerPrice} x {item.quantity}</p>
+
               </div>
             </div>
           ))}

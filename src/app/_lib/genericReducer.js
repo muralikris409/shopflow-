@@ -27,7 +27,7 @@ const genericReducer = createSlice({
         state.data.language=action.payload;
 
       }
-    },
+    }, 
   });
   
   export const { updateFilter, resetFilter,updateSearch,updateCountry,updateLanguage } = genericReducer.actions;

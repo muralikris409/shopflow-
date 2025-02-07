@@ -23,7 +23,7 @@ export async function login(formdata, ctx = null) {
         return { data, token };
     } catch (error) {
       console.log(error);
-        throw new Error(error.response || "An error occurred during login.");
+        throw new Error(error.response.data.message || "An error occurred during login.");
     }
 }
 
@@ -47,7 +47,7 @@ export async function googleOAuth(data, ctx = null) {
 
         return response.data;
     } catch (error) {
-        throw new Error(error || "An error occurred during Google OAuth.");
+        throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
     }
 }
 
