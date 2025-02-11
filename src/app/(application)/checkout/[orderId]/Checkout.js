@@ -10,11 +10,11 @@ import { useToast } from '@/hooks/use-toast';
 
 const OrderSummary = ({ title ,orderId}) => {
   const router = useRouter();
-  const userId = useSelector((state) => state.session.user?.id);
+  const userId = useSelector((state) => state.userData.user?.id);
   const {toast}=useToast();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const phoneNumber = useSelector(state => state?.session?.user?.phone);
+  const phoneNumber = useSelector(state => state?.userData?.user?.phone);
   const [orderData, setOrderData] = useState([]);
   const [phone, setPhone] = useState(phoneNumber || '');
   const [phoneError, setPhoneError] = useState('');
@@ -22,7 +22,7 @@ const OrderSummary = ({ title ,orderId}) => {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [totalBill,setTotalBill]=useState();
-  const token = useSelector(state => state?.session?.token);
+  const token = useSelector(state => state?.userData?.token);
   const [newAddress, setNewAddress] = useState({
     street: '',
     city: '',

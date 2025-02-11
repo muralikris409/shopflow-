@@ -2,12 +2,12 @@
 import React, { useState, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSession } from "../../_lib/sessionReducer";
 import { useRouter } from "next/navigation";
 import { googleOAuth, login, signUp } from "@/app/_service/UserService";
 import Link from "next/link";
 import UserCartService from "@/app/_service/UserCartService";
 import { parseCookies } from 'nookies';
+import { fetchData } from "@/app/_lib/userReducer";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -40,8 +40,7 @@ const AuthForm = () => {
     console.log(userData);
     if (userData) {
       try {
-        const parsedData = JSON.parse(userData);
-        dispatch(setSession(parsedData));
+        dispatch(fetchData(`user/userProfileInfo?userId=${userData?.user?.userId}`, userData?.token));
       } catch (error) {
         console.error("Failed to parse user data from cookies:", error);
       }
@@ -85,12 +84,12 @@ const AuthForm = () => {
         setLoading(true);
         const response = await login(formData);
         console.log(response)
-
         syncUser();
         if (historyRoute) {
           historyRoute.includes("product") ? router.push(`${historyRoute}`) : router.push("/cart");
         } else {
           router.push("/");
+          router.refresh();
         }
       } else {
         setLoading(true);
@@ -102,7 +101,8 @@ const AuthForm = () => {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-      console.log(error)
+      console.log("test",error)
+      
       setErrors({ form: error+"" || "An unexpected error occurred. Please try again." });
       setSuccess(null);
     }

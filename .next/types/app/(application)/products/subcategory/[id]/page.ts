@@ -1,4 +1,4 @@
-// File: /home/murali/Documents/Cloning task/shopflow-cpy/shopflowcpy/src/app/(application)/products/subcategory/[id]/page.js
+// File: /home/murali/Documents/Cloning task/shopflow-current/shopflow-cpy/shopflowcpy/src/app/(application)/products/subcategory/[id]/page.js
 import * as entry from '../../../../../../../src/app/(application)/products/subcategory/[id]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

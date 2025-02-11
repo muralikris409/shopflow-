@@ -6,7 +6,6 @@ import { getCategory } from "../_service/ProductService";
 import { FaTimes } from "react-icons/fa";
 
 function Filter() {
-  const filter = useSelector((state) => state.generic);
   const dispatch = useDispatch();
   const [data, setData] = useState([]);
 
@@ -74,10 +73,10 @@ function Filter() {
   return (
     <div className="relative flex max-h-screen overflow-y-scroll md:overflow-y-hidden scrollbar-hidden">
       {/* Sidebar for Desktop */}
-      <div className="hidden sm:block w-64 bg-white p-6 border-r overflow-y-scroll h-full">
+      <div className="hidden sm:block w-72 bg-white p-3 border-r overflow-y-scroll  h-full scrollbar-hide">
         <h2 className="text-xl font-semibold mb-4">Filters</h2>
         <h3 className="text-lg font-medium mb-2">Categories</h3>
-        <div className="mb-6">
+        <div className="mb-6 overflow-y-scroll max-h-72 scrollbar-hide">
           {data?.map((category) => (
             <button
               key={category.id}
@@ -96,7 +95,7 @@ function Filter() {
         {filters.selectedCategory && (
           <>
             <h3 className="text-lg font-medium mb-2">Subcategories</h3>
-            <div className="mb-6">
+            <div className="mb-6  overflow-y-scroll max-h-72 scrollbar-hide">
               {data
                 .find((cat) => cat.name === filters.selectedCategory)
                 ?.subCategories?.map((subcategory) => (

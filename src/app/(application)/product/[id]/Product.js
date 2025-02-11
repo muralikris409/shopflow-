@@ -17,8 +17,8 @@ export default function Product({ productId = 1 }) {
     const {toast} =useToast();
     const { data = [], loading, error } = useSelector(state => state.product);
     const product = data?.data;
-    const isLoggedIn = useSelector((state) => state.session.user);
-    const token = useSelector((state) => state.session.token);
+    const isLoggedIn = useSelector((state) => state.userData?.user);
+    const token = useSelector((state) => state.userData?.token);
     const userCartService = new UserCartService();
 
     const [message, setMessage] = useState('');
@@ -51,7 +51,7 @@ export default function Product({ productId = 1 }) {
     const handleNavigation = (order) => {
         const data = { orders: order };
         dispatch(setProductData({ orders: { ...data } }));
-        router.push(`/checkout/${order?.order?.id}`);
+        router.push(`/checkout/${order?.data?.id}`);
     };
 
     const handleBuy = async () => {
@@ -90,8 +90,9 @@ export default function Product({ productId = 1 }) {
 
     const handleAddorRemoveFromWishlist = async () => {
         setLoadingState(prev => ({ ...prev, wishlist: true }));
+        console.log(product)
         try {
-            const response = await addOrRemoveProductFromWishlist(isLoggedIn.id, product.id, token);
+            const response = await addOrRemoveProductFromWishlist(product.id, token);
             showMessage(response?.data?.message || "Product added to Wishlist", 'success');
         } catch (error) {
             showMessage('An unexpected error occurred. Please try again.', 'error');

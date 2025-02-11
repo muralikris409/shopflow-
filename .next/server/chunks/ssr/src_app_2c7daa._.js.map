@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 12, "column": 0}, "map": {"version":3,"sources":["file:///home/murali/Documents/Cloning%20task/shopflow-current/shopflow-cpy/shopflowcpy/src/app/icon.png.mjs%20%28structured%20image%20object%29"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 89, height: 123 }\n"],"names":[],"mappings":";;;AAAA;;uCACe;IAAE,KAAA,+GAAA,CAAA,UAAG;IAAE,OAAO;IAAI,QAAQ;AAAI"}},
-    {"offset": {"line": 22, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

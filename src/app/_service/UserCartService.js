@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { axiosInstance } from "../api/axios";
 
 function UserCartService() {
-  const token = useSelector((state) => state.session.token);
+  const token = useSelector((state) => state.userData.token);
 
   const cartKey = 'shopflow';
 

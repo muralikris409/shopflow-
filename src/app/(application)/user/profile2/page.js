@@ -6,10 +6,9 @@ import { User, ShoppingCart, Heart, ClipboardList, MapPin } from "lucide-react";
 import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 
-// Lazy load pages to avoid SSR issues
 const Wishlist = dynamic(() => import("../../wishlist/page"), { ssr: false });
 const OrderPage = dynamic(() => import("../../orders/page"), { ssr: false });
-const Cart = dynamic(() => import("../../cartv2/page"), { ssr: false });
+const Cart = dynamic(() => import("../../cart/page"), { ssr: false });
 const EditProfile = dynamic(() => import("../profile/manage/page"), { ssr: false });
 const AddressManagement = dynamic(() => import("../profile/address/page"), { ssr: false });
 

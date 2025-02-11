@@ -18,7 +18,7 @@ async function Deals({ fetchData, title }) {
         <h1 className="text-center text-3xl font-bold text-blue-600">
           {title}
         </h1>
-        <div className="mt-6 max-h-96 overflow-y-auto px-2">
+        <div className="mt-6 max-h-96 overflow-y-auto scrollbar-hide px-2">
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
             {products?.length > 0 ? (
               products.slice(0, 6).map((product, index) => (

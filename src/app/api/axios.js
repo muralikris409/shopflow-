@@ -1,11 +1,25 @@
-import axios from "axios"
-export const axiosInstance=axios.create({
-    // baseURL:"http://192.168.0.114:5000",
-    // baseURL:"http://localhost:5000"
-    //  baseURL:"https://shopflow-1.onrender.com"
-    baseURL:process.env.NEXT_PUBLIC_API_URL
-    // baseURL:"http://192.168.123.35:5000",
-  
 
-}
-) 
+import axios from "axios";
+import Cookies from "js-cookie";
+
+export const axiosInstance = axios.create({
+//   baseURL: "http://192.168.242.35:5000", 
+  baseURL: "http://192.168.0.114:5000", 
+});
+
+axiosInstance.interceptors.request.use(
+    (config) => {
+      const session = Cookies.get("shopflow_session");
+      
+      if (!session) return config;
+  
+      const token = JSON.parse(session)?.token;
+  
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+  
+      return config;
+    },
+    (error) => Promise.reject(error)
+  );

@@ -147,10 +147,10 @@ catch(err){
 export async function getProfileInfo(token,userId){
     try{
         console.log("test")
-    const response=await axiosInstance.post(`user/userProfileInfo?userId=${userId}`,{},{
-        headers:{
-            Authorization:`Bearer ${token}`
-        }
+    const response=await axiosInstance.get(`user/userProfileInfo?userId=${userId}`,{},{
+        // headers:{
+        //     Authorization:`Bearer ${token}`
+        // }
     });
     console.log(response);
         return response;
@@ -163,7 +163,7 @@ catch(err){
 export async function updateProfileInfo(token,userId,data){
     try{
         console.log("test")
-    const response=await axiosInstance.post(`user/updateUserProfile?userId=${userId}`,
+    const response=await axiosInstance.put(`user/updateUserProfile?userId=${userId}`,
         data
         
 
@@ -191,7 +191,7 @@ export async function fetchUserAddresses (token,userId){
   try {
 console.log("token",token);
 
-    const response = await axiosInstance.post(`user/getAllAddress?userId=${userId}`,{}, {
+    const response = await axiosInstance.get(`user/getAllAddress?userId=${userId}`, {
       
       headers:{
         Authorization:`Bearer ${token}`
@@ -206,7 +206,7 @@ console.log("token",token);
 };
 export const makeAddressPrimary = async (token,userId,addressId) => {
     try {
-      const response = await axiosInstance.post(`user/makePrimaryAddress`,{}, {
+      const response = await axiosInstance.put(`user/makePrimaryAddress`,{}, {
         params: { userId,addressId },
         headers:{
           Authorization:`Bearer ${token}`
@@ -253,7 +253,7 @@ export const updateAddress = async (token, userId, addressId,addressData) => {
     try {
       const { street, city, state, country, zip, isPrimary } = addressData;
   
-      const response = await axiosInstance.post(
+      const response = await axiosInstance.put(
         'user/editAddress',
         {
 
@@ -285,9 +285,9 @@ export const updateAddress = async (token, userId, addressId,addressData) => {
   export const removeAddress = async (token, userId, addressId) => {
     try {
   
-      const response = await axiosInstance.post(
+      const response = await axiosInstance.delete(
         'user/deleteAddress',
-        {},
+        
         {
           params: {
             userId,

@@ -1,15 +1,18 @@
 import { axiosInstance as axios } from '../api/axios'; 
 
 export async function loadWishlist(userId, token) {
+  console.log("wishlist")
+
   try {
     const response = await axios.get('/user/wishlist/viewWishlist', {
-      params: { userId },
+     
       headers: {
         Authorization: `Bearer ${token}`,
         
     'Content-Type': 'application/json',
       },
     });
+    console.log("wishlist",response)
     return response.data.data.products || [];
   } catch (error) {
     console.error('Error loading wishlist:', error);
@@ -18,13 +21,13 @@ export async function loadWishlist(userId, token) {
 }
 
 
-export async function addOrRemoveProductFromWishlist(userId, productId, token) {
+export async function addOrRemoveProductFromWishlist( productId, token) {
   try {
     const response = await axios.post(
       '/user/wishlist/addOrRemoveItem',
       {},
       {
-        params: { userId, productId: productId },
+        params: {  productId: productId },
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',

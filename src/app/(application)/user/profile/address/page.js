@@ -32,8 +32,8 @@ const AddressManagement = () => {
   const [showForm, setShowForm] = useState(false);
   const [editAddressId, setEditAddressId] = useState(null);
 
-  const userId = useSelector((state) => state?.session?.user?.id);
-  const token = useSelector((state) => state?.session?.token);
+  const userId = useSelector((state) => state?.userData?.user?.id);
+  const token = useSelector((state) => state?.userData?.token);
 
   const { toast } = useToast();
 

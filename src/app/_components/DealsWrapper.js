@@ -11,7 +11,7 @@ export default function DealsWrapper({children,product}) {
           router.push(`product/${product.id}`);
           }
   return (
-    <div className="overflow-x-hidden" onClick={()=>handleNavigation(product)}>
+    <div className="overflow-x-hidden " onClick={()=>handleNavigation(product)}>
       {children}
     </div>
   )

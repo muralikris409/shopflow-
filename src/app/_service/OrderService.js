@@ -3,6 +3,7 @@ import {axiosInstance} from '../api/axios';
 export const createOrder = async (userId, items) => {
   try {
     const response = await axiosInstance.post('/user/order/createOrder', { userId, items });
+    console.log(response)
     return response.data;
   } catch (error) {
     console.error('Error creating order:', error);
@@ -56,10 +57,10 @@ export const checkOutOrder = async (orderId) => {
     throw new Error(error?.response?.data?.message || 'Error fetching user orders.');
   }
 };
-export const getOrderByUserId = async (userId) => {
-    console.log("userId:", userId);
+export const getOrderByUserId = async () => {
+   
     try {
-      const response = await axiosInstance.get(`/user/order/getUserOrder?userId=${userId}`
+      const response = await axiosInstance.get(`/user/order/getUserOrder`
        
       );
       return response.data;

@@ -25,15 +25,22 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    signOut(){
+      state.user=null;
+      state.token=null;
+      state.loading=false;
+      state.error=null;
+    }
   },
 });
 
-export const { fetchDataStart, fetchDataSuccess, fetchDataFailure } = userSlice.actions;
+export const { fetchDataStart, fetchDataSuccess, fetchDataFailure,signOut } = userSlice.actions;
 
 export const fetchData = (endpoint,token) => async (dispatch) => {
   dispatch(fetchDataStart()); 
+  console.log(token)
   try {
-    const response = await axiosInstance.post(endpoint,{},{
+    const response = await axiosInstance.get(endpoint,{
       headers:{
         Authorization:`Bearer ${token}`
       }

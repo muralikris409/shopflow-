@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import SearchTag from "./SearchTag";
 import { updateSearch } from "@/app/_lib/genericReducer";
 import { useRef, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
@@ -24,7 +23,7 @@ export default function SearchBar() {
   }, [state]);
 
   return (
-    <div className="w-2/4 px-4 py-2 md:px-10">
+    <div className="w-3/4 px-4 py-2 md:px-10">
       <div className="relative text-gray-900 flex items-center gap-2">
         <Input
           ref={ref}
@@ -36,7 +35,6 @@ export default function SearchBar() {
           <FaSearch className="text-sm md:text-base" />
         </Button>
       </div>
-      <SearchTag />
     </div>
   );
 }

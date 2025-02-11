@@ -10,6 +10,7 @@ const EditProfile = () => {
   const userData = useSelector((state) => state?.userData);
   const user = userData?.user;
   const token = userData?.token;
+  
   const userId = user?.id;
 
   const [fieldData, setFieldData] = useState({

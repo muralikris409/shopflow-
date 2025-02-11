@@ -27,7 +27,7 @@ const UserProfile = () => {
     <div className="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md m-10">
       <div className="flex items-center mb-6">
         <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center">
-          {user.profile_pic ? (
+          {user?.profile_pic ? (
             <img src={user?.profile_pic} alt="Profile" className="w-full h-full object-cover" />
           ) : (
             <span className="text-3xl font-bold text-gray-500">{user?.name?.charAt(0)}</span>

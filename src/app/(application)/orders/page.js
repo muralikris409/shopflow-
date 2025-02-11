@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setProductData } from "../../_lib/utilReducer";
 import { useRouter } from "next/navigation";
-
+import { Loader } from "@/app/_components/Loader";
 const ProductTile = ({ product, onCancel, cancelLoading }) => {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -92,16 +92,13 @@ const OrderPage = () => {
   const [error, setError] = useState(null);
   const [cancelLoading, setCancelLoading] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
-  const userId = useSelector((state) => state.session.user?.id);
-
   useEffect(() => {
     const fetchOrders = async () => {
-      if (!userId) return;
       try {
         setLoading(true);
-        const response = await getOrderByUserId(userId);
+        const response = await getOrderByUserId();
         const data = response?.data;
-
+        console.log(data)
         const flattenedProducts = data?.flatMap((order) =>
           order.items.map((item) => ({
             ...item,
@@ -120,7 +117,7 @@ const OrderPage = () => {
     };
 
     fetchOrders();
-  }, [userId]);
+  }, []);
 
   const handleCancelOrder = async (orderId) => {
     try {
@@ -154,7 +151,7 @@ const OrderPage = () => {
   };
 
   if (loading) {
-    return <div className="text-center text-lg">Loading...</div>;
+    return <Loader/>;
   }
 
   if (error) {
