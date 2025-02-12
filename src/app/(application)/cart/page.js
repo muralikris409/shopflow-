@@ -115,7 +115,7 @@ const Cart = () => {
         <h2 className="text-3xl font-semibold text-gray-800 mb-6">Shopping Cart</h2>
         {error ? (
           <p className="text-center text-red-500">{error.message}</p>
-        ) : products.length === 0 ? (
+        ) : products?.length === 0 ? (
           <p className="text-center text-gray-600">Your cart is empty</p>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -159,7 +159,7 @@ const Cart = () => {
                       router.push('/auth');
                     }}
                     className="w-full"
-                    disabled={products.length === 0 || loadingCheckout}
+                    disabled={products?.length === 0 || loadingCheckout}
                   >
                     {loadingCheckout ? 'Processing...' : 'Checkout'}
                   </Button>
