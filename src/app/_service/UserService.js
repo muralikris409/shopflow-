@@ -13,11 +13,10 @@ export async function login(formdata, ctx = null) {
        console.log(response.data)
         const { token, data } = response.data;
         console.log(token,data)
-        setCookie(ctx, "shopflow_session", JSON.stringify({ user: data, token }), {
-            maxAge: 30 * 24 * 60 * 60, // 30 days
+        setCookie(ctx, "shopflow_session", JSON.stringify({token }), {
+            maxAge: 30 * 24 * 60 * 60,
             path: '/',
-            secure: process.env.NODE_ENV === 'production', // Use secure cookies in production
-            sameSite: 'lax', // Adjust based on your needs
+            sameSite: 'lax',
         });
 
         return { data, token };
@@ -30,18 +29,14 @@ export async function login(formdata, ctx = null) {
 export async function googleOAuth(data, ctx = null) {
     try {
         const response = await axios.post("user/oauth", {
-            name: data?.name,
-            email: data?.email,
-            image: data?.image,
-            id: data?.id
+            ...data
         });
-
+       console.log("google auth b-end res after gauth",response);
         const { token, data: user } = response.data;
 
-        setCookie(ctx, "shopflow_session", JSON.stringify({ user: user, token }), {
+        setCookie(ctx, "shopflow_session", JSON.stringify({ token }), {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
-            secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
         });
 
@@ -52,44 +47,6 @@ export async function googleOAuth(data, ctx = null) {
 }
 
 
-// export async function login(formdata) {
-//     const { email, password } = formdata;
-  
-//     try {
-//         const response = await axios.post("user/login", {
-//             email: email,
-//             password: password
-//         });
-
-//         const { token, data } = response.data;
-
-//         localStorage.setItem("shopflow_session", JSON.stringify({ user: data, token }));
-//         return { data, token };
-//     } catch (error) {
-        
-//             throw new Error(error.response.data.message || "An error occurred during login.");
-       
-//     }
-// }
-// export async function googleOAuth(data) {
-//   try {
-//       const response = await axios.post("user/oauth", {
-//           name: data.name,
-//           email: data.email,
-//           image: data.image,
-//           id: data.id
-//       });
-
-//       const { token, data: user } = response.data;
-
-//       localStorage.setItem("shopflow_session", JSON.stringify({ user: user, token }));
-//       return response.data;
-//   } catch (error) {
-     
-//           throw new Error(error.response.data.message || "An error occurred during Google OAuth.");
-     
-//   }
-// }
 export async function signUp(formdata) {
     const { username: name, email, password } = formdata;
 

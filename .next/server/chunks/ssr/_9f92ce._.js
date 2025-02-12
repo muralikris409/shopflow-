@@ -193,12 +193,10 @@ async function login(formdata, ctx = null) {
         const { token, data } = response.data;
         console.log(token, data);
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nookies$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setCookie"])(ctx, "shopflow_session", JSON.stringify({
-            user: data,
             token
         }), {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
-            secure: ("TURBOPACK compile-time value", "development") === 'production',
             sameSite: 'lax'
         });
         return {
@@ -213,19 +211,15 @@ async function login(formdata, ctx = null) {
 async function googleOAuth(data, ctx = null) {
     try {
         const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["axiosInstance"].post("user/oauth", {
-            name: data?.name,
-            email: data?.email,
-            image: data?.image,
-            id: data?.id
+            ...data
         });
+        console.log("google auth b-end res after gauth", response);
         const { token, data: user } = response.data;
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nookies$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setCookie"])(ctx, "shopflow_session", JSON.stringify({
-            user: user,
             token
         }), {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
-            secure: ("TURBOPACK compile-time value", "development") === 'production',
             sameSite: 'lax'
         });
         return response.data;

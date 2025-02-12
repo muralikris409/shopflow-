@@ -692,9 +692,9 @@ function UserMenu() {
         try {
             const sessionCookie = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].get('shopflow_session');
             if (sessionCookie) {
-                const { user, token } = JSON.parse(sessionCookie);
-                if (user?.id && token) {
-                    dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_lib$2f$userReducer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchData"])(`user/userProfileInfo?userId=${user.id}`, token));
+                const { token } = JSON.parse(sessionCookie);
+                if (token) {
+                    dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_lib$2f$userReducer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchData"])(`user/userProfileInfo`, token));
                 }
             }
         } catch (err) {

@@ -26,9 +26,9 @@ export default function UserMenu() {
     try {
       const sessionCookie = Cookies.get('shopflow_session');
       if (sessionCookie) {
-        const { user, token } = JSON.parse(sessionCookie);
-        if (user?.id && token) {
-          dispatch(fetchData(`user/userProfileInfo?userId=${user.id}`, token));
+        const { token } = JSON.parse(sessionCookie);
+        if ( token) {
+          dispatch(fetchData(`user/userProfileInfo`, token));
         }
       }
     } catch (err) {

@@ -521,8 +521,8 @@ const Cart = ()=>{
         "Cart.useSelector[cartItems]": (state)=>state.cart.items
     }["Cart.useSelector[cartItems]"]);
     const totalBill = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
-        "Cart.useSelector[totalBill]": (state)=>state.cart.totalAmount
-    }["Cart.useSelector[totalBill]"]);
+        "Cart.useSelector": (state)=>state.cart.totalAmount
+    }["Cart.useSelector"]) || 0;
     const [products, setProducts] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(isLoggedIn ? cartItems : []);
     const [totalAmount, setTotalAmount] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(totalBill || 0);
     const error = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
@@ -565,7 +565,7 @@ const Cart = ()=>{
     const handleCheckout = async ()=>{
         setLoadingCheckout(true);
         try {
-            const items = products.map((product)=>({
+            const items = products?.map((product)=>({
                     productId: product.productId || product.id,
                     quantity: product.quantity
                 }));
@@ -641,7 +641,7 @@ const Cart = ()=>{
                     fileName: "[project]/src/app/(application)/cart/page.js",
                     lineNumber: 117,
                     columnNumber: 11
-                }, this) : products.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                }, this) : products?.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "text-center text-gray-600",
                     children: "Your cart is empty"
                 }, void 0, false, {
@@ -658,7 +658,7 @@ const Cart = ()=>{
                                     className: "p-4",
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
                                         className: "space-y-4",
-                                        children: products.map((product, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CartTile, {
+                                        children: products?.map((product, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(CartTile, {
                                                 handleNavigation: handleNavigation,
                                                 product: isLoggedIn ? product.product : product,
                                                 onIncreaseQuantity: ()=>updateCart(product.productId || product.id, 'increase'),
@@ -777,7 +777,7 @@ const Cart = ()=>{
                                                     router.push('/auth');
                                                 },
                                                 className: "w-full",
-                                                disabled: products.length === 0 || loadingCheckout,
+                                                disabled: products?.length === 0 || loadingCheckout,
                                                 children: loadingCheckout ? 'Processing...' : 'Checkout'
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/cart/page.js",
@@ -819,7 +819,7 @@ const Cart = ()=>{
         columnNumber: 5
     }, this);
 };
-_s(Cart, "2kwbcqdoFg/0SbfnKCD/KsFFVp8=", false, function() {
+_s(Cart, "o+KwkzGjuSK+9IXtHjQLcoe3Xes=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"],
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"],

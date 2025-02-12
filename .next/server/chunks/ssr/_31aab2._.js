@@ -34,12 +34,10 @@ async function login(formdata, ctx = null) {
         const { token, data } = response.data;
         console.log(token, data);
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nookies$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setCookie"])(ctx, "shopflow_session", JSON.stringify({
-            user: data,
             token
         }), {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
-            secure: ("TURBOPACK compile-time value", "development") === 'production',
             sameSite: 'lax'
         });
         return {
@@ -54,19 +52,15 @@ async function login(formdata, ctx = null) {
 async function googleOAuth(data, ctx = null) {
     try {
         const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["axiosInstance"].post("user/oauth", {
-            name: data?.name,
-            email: data?.email,
-            image: data?.image,
-            id: data?.id
+            ...data
         });
+        console.log("google auth b-end res after gauth", response);
         const { token, data: user } = response.data;
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nookies$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["setCookie"])(ctx, "shopflow_session", JSON.stringify({
-            user: user,
             token
         }), {
             maxAge: 30 * 24 * 60 * 60,
             path: '/',
-            secure: ("TURBOPACK compile-time value", "development") === 'production',
             sameSite: 'lax'
         });
         return response.data;
@@ -416,7 +410,8 @@ const AuthForm = ()=>{
     const userCartService = new __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$UserCartService$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"]();
     const [success, setSuccess] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    const { data: session, status } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSession"])();
+    console.log((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSession"])());
+    const { token, user, status } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSession"])();
     const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useDispatch"])();
     const historyRoute = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSelector"])((state)=>state?.utils?.history?.route);
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
@@ -438,11 +433,10 @@ const AuthForm = ()=>{
     };
     const syncUser = ()=>{
         const cookies = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nookies$2f$dist$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["parseCookies"])();
-        const userData = cookies.shopflow_session;
-        console.log(userData);
-        if (userData) {
+        const { token } = cookies.shopflow_session;
+        if (token) {
             try {
-                dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_lib$2f$userReducer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchData"])(`user/userProfileInfo?userId=${userData?.user?.userId}`, userData?.token));
+                dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_lib$2f$userReducer$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["fetchData"])(`user/userProfileInfo`, token));
             } catch (error) {
                 console.error("Failed to parse user data from cookies:", error);
             }
@@ -513,10 +507,9 @@ const AuthForm = ()=>{
     const handleGoogleLogin = async ()=>{
         try {
             const res = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["signIn"])("google");
-            console.log(res);
-            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$UserService$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["googleOAuth"])(session?.user);
+            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$UserService$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["googleOAuth"])(token);
             syncUser();
-            router.push("/");
+        // router.push("/");
         } catch (error) {
             console.error("Google login error:", error);
             // alert(JSON.stringify(error));

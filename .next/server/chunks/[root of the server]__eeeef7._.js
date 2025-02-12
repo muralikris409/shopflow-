@@ -149,9 +149,18 @@ const handler = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules
         })
     ],
     callbacks: {
-        async session ({ session, token }) {
-            session.user.id = token.sub;
-            return session;
+        async session ({ session, token, user }) {
+            return {
+                ...session,
+                user: {
+                    ...session.user,
+                    id: token.sub,
+                    email: token.email,
+                    name: token.name,
+                    picture: token.picture
+                },
+                token
+            };
         }
     },
     secret: "0cc0328d1199cf6be8b6d3510765df3e"

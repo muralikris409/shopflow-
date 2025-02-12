@@ -60,7 +60,7 @@ export default function Product({ productId = 1 }) {
         try {
             const userId = isLoggedIn ? isLoggedIn.id : "";
             const items = [{ productId: product.id, quantity: 1 }];
-            const order = await createOrder(userId, items);
+            const order = await createOrder( items);
             showMessage('Order created successfully! Redirecting to checkout...', 'success');
             handleNavigation(order);
         } catch (err) {

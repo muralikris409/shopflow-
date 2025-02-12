@@ -16,7 +16,8 @@ const AuthForm = () => {
   const userCartService = new UserCartService();
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { data: session, status } = useSession();
+  console.log(useSession());
+  const {token,user,status}=useSession();
   const dispatch = useDispatch();
   const historyRoute = useSelector(state => state?.utils?.history?.route);
   const router = useRouter();
@@ -36,11 +37,10 @@ const AuthForm = () => {
   const syncUser = () => {
     const cookies = parseCookies();
 
-    const userData = cookies.shopflow_session;
-    console.log(userData);
-    if (userData) {
+    const {token} = cookies.shopflow_session;
+    if (token) {
       try {
-        dispatch(fetchData(`user/userProfileInfo?userId=${userData?.user?.userId}`, userData?.token));
+        dispatch(fetchData(`user/userProfileInfo`, token));
       } catch (error) {
         console.error("Failed to parse user data from cookies:", error);
       }
@@ -111,10 +111,11 @@ const AuthForm = () => {
   const handleGoogleLogin = async () => {
     try {
       const res=await signIn("google");
-      console.log(res);
-      await googleOAuth(session?.user);
+      await googleOAuth(token);
       syncUser();
-      router.push("/");
+      
+
+      // router.push("/");
     } catch (error) {
       console.error("Google login error:", error);
       // alert(JSON.stringify(error));
@@ -128,7 +129,6 @@ const AuthForm = () => {
       syncUser();
     }
   }, [status]);
-
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">

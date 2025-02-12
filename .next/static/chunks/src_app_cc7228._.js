@@ -800,7 +800,7 @@ function Product({ productId = 1 }) {
                     quantity: 1
                 }
             ];
-            const order = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$OrderService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createOrder"])(userId, items);
+            const order = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$OrderService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["createOrder"])(items);
             showMessage('Order created successfully! Redirecting to checkout...', 'success');
             handleNavigation(order);
         } catch (err) {
