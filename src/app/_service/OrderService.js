@@ -1,8 +1,8 @@
 import {axiosInstance} from '../api/axios';
 
-export const createOrder = async (userId, items) => {
+export const createOrder = async ( items) => {
   try {
-    const response = await axiosInstance.post('/user/order/createOrder', { userId, items });
+    const response = await axiosInstance.post('/user/order/createOrder', { items });
     console.log(response)
     return response.data;
   } catch (error) {

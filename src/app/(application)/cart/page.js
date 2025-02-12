@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import {
+  getTotalAmount,
   decreaseQuantity as guestDecreaseQuantity,
   getCart as guestGetCart,
   increaseQuantity as guestIncreaseQuantity,
@@ -19,30 +20,38 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 import { Trash2 } from 'lucide-react';
-import { useToast } from '@/hooks/use-toast'; // Importing useToast from shadcn
+import { useToast } from '@/hooks/use-toast';
 
 const Cart = () => {
   const dispatch = useDispatch();
   const userCartService = new UserCartService();
   const isLoggedIn = useSelector((state) => state.userData?.user);
-  const cookie = Cookies.get('shopflow_session') ? JSON.parse(Cookies.get('shopflow_session')) : null;
   const router = useRouter();
-  let products = useSelector((state) => state?.cart?.items) || [];
-  const totalAmount = useSelector((state) => state?.cart?.totalAmount) || 0;
+  const cartItems=useSelector(state=>state.cart.items);
+  const totalBill=useSelector(state=>state.cart.totalAmount);
+  const [products, setProducts] = useState(isLoggedIn?  cartItems:[]); 
+  const [totalAmount, setTotalAmount] = useState(totalBill||0);
   const error = useSelector((state) => state.cart.error);
   const [loadingCheckout, setLoadingCheckout] = useState(false);
-  const { toast } = useToast(); // Using useToast hook
+  const { toast } = useToast();
+  console.log(totalBill);
   
+  useEffect(() => {
+    setProducts(cartItems);
+    setTotalAmount(totalBill);
+  }, [cartItems]);
   useEffect(() => {
     const loadCart = async () => {
       if (isLoggedIn) {
-        dispatch(fetchData(`/user/cart/viewCart?userId=${cookie?.user?.id}`, cookie?.token));
-      } else {
-        const guestCart = typeof window !== 'undefined' ? guestGetCart() : [];
+        dispatch(fetchData(`/user/cart/viewCart`));
         
+      } else {
+        if (typeof window !== 'undefined') {
+          setProducts(guestGetCart());
+          setTotalAmount(getTotalAmount());
+        }
       }
     };
-
     loadCart();
   }, [isLoggedIn, dispatch]);
 
@@ -54,54 +63,49 @@ const Cart = () => {
     setLoadingCheckout(true);
     try {
       const items = products.map((product) => ({
-        productId: product.productId,
+        productId: product.productId || product.id,
         quantity: product.quantity,
       }));
-      const { order } = await createOrder(isLoggedIn.id, items);
-      router.push(`/checkout/${order.id}`);
+      const { data } = await createOrder(items);
+      router.push(`/checkout/${data?.id}`);
     } catch (err) {
-      toast({ title: 'Error', description: 'Failed to create order. Please try again.', variant: 'destructive' }); // Updated to useToast
+      toast({ title: 'Error', description: 'Failed to create order. Please try again.', variant: 'destructive' });
     } finally {
       setLoadingCheckout(false);
     }
   };
 
-  const handleIncreaseQuantity = async (productId) => {
+  const updateCart = async (productId, action) => {
     try {
       if (isLoggedIn) {
-        await userCartService.updateCartCount(isLoggedIn.id, productId, 'increase');
+        await userCartService.updateCartCount(productId, action);
+        dispatch(fetchData(`/user/cart/viewCart`));
       } else {
-        guestIncreaseQuantity(productId);
+        if (typeof window !== 'undefined') {
+          action === 'increase' ? guestIncreaseQuantity(productId) : guestDecreaseQuantity(productId);
+          setProducts(guestGetCart());
+          setTotalAmount(getTotalAmount());
+        }
       }
-      dispatch(fetchData(isLoggedIn ? `/user/cart/viewCart?userId=${cookie?.user?.id}` : guestGetCart(), cookie?.token));
     } catch (err) {
-      toast({ title: 'Error', description: 'Failed to update item quantity.', variant: 'destructive' }); // Updated to useToast
-    }
-  };
-
-  const handleDecreaseQuantity = async (productId) => {
-    try {
-      if (isLoggedIn) {
-        await userCartService.updateCartCount(isLoggedIn.id, productId, 'decrease');
-      } else {
-        guestDecreaseQuantity(productId);
-      }
-      dispatch(fetchData(isLoggedIn ? `/user/cart/viewCart?userId=${cookie?.user?.id}` : guestGetCart(), cookie?.token));
-    } catch (err) {
-      toast({ title: 'Error', description: 'Failed to update item quantity.', variant: 'destructive' }); // Updated to useToast
+      toast({ title: 'Error', description: 'Failed to update item quantity.', variant: 'destructive' });
     }
   };
 
   const handleRemoveProduct = async (productId) => {
     try {
       if (isLoggedIn) {
-        await userCartService.deleteFromCart(isLoggedIn.id, productId);
+        await userCartService.deleteFromCart(productId);
+        dispatch(fetchData(`/user/cart/viewCart`));
       } else {
-        guestRemoveProduct(productId);
+        if (typeof window !== 'undefined') {
+          guestRemoveProduct(productId);
+          setProducts(guestGetCart());
+          setTotalAmount(getTotalAmount());
+        }
       }
-      dispatch(fetchData(isLoggedIn ? `/user/cart/viewCart?userId=${cookie?.user?.id}` : guestGetCart(), cookie?.token));
     } catch (err) {
-      toast({ title: 'Error', description: 'Failed to remove product from cart.', variant: 'destructive' }); // Updated to useToast
+      toast({ title: 'Error', description: 'Failed to remove product from cart.', variant: 'destructive' });
     }
   };
 
@@ -124,9 +128,9 @@ const Cart = () => {
                         key={index}
                         handleNavigation={handleNavigation}
                         product={isLoggedIn ? product.product : product}
-                        onIncreaseQuantity={handleIncreaseQuantity}
-                        onDecreaseQuantity={handleDecreaseQuantity}
-                        onRemoveProduct={handleRemoveProduct}
+                        onIncreaseQuantity={() => updateCart(product.productId || product.id, 'increase')}
+                        onDecreaseQuantity={() => updateCart(product.productId || product.id, 'decrease')}
+                        onRemoveProduct={() => handleRemoveProduct(product.productId || product.id)}
                         quantity={product?.quantity}
                       />
                     ))}
@@ -143,10 +147,6 @@ const Cart = () => {
                   <div className="flex justify-between">
                     <p>Price</p>
                     <p>${totalAmount.toFixed(2)}</p>
-                  </div>
-                  <div className="flex justify-between text-green-600">
-                    <p>Discount</p>
-                    <p>- $0.00</p>
                   </div>
                   <Separator />
                   <div className="flex justify-between font-semibold">
@@ -184,14 +184,14 @@ function CartTile({
   quantity,
 }) {
   const [tileLoading, setTileLoading] = useState(false);
-  const { toast } = useToast(); // Using useToast hook
+  const { toast } = useToast();
 
   const handleOperation = async (operation, productId) => {
     setTileLoading(true);
     try {
       await operation(productId);
     } catch (err) {
-      toast({ title: 'Error', description: 'Operation failed. Please try again.', variant: 'destructive' }); // Updated to useToast
+      toast({ title: 'Error', description: 'Operation failed. Please try again.', variant: 'destructive' });
     } finally {
       setTileLoading(false);
     }
@@ -234,7 +234,7 @@ function CartTile({
               variant="outline"
               size="sm"
               onClick={() => handleOperation(onDecreaseQuantity, product?.id)}
-              disabled={tileLoading||quantity==1}
+              disabled={tileLoading || quantity == 1}
             >
               -
             </Button>

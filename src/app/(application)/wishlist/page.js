@@ -113,7 +113,7 @@ const WishlistTile = React.memo(({ product, onRemoveProduct }) => {
         </Button>
       </div>
       <CardContent>
-        <CardTitle className="cursor-pointer text-lg font-semibold hover:text-blue-600" onClick={() => router.push(`/product/${product.productId}`)}>
+        <CardTitle className="cursor-pointer text-lg font-semibold hover:text-blue-600" onClick={() => router.push(`/product/${product.id}`)}>
           {product.name}
         </CardTitle>
         <p className="text-sm text-gray-500">Brand: {product.brand}</p>

@@ -32,15 +32,10 @@ const cartSlice = createSlice({
 
 export const { fetchDataStart, fetchDataSuccess, fetchDataFailure } = cartSlice.actions;
 
-export const fetchData = (endpoint,token) => async (dispatch) => {
+export const fetchData = (endpoint) => async (dispatch) => {
   dispatch(fetchDataStart()); 
-  console.log(endpoint,token)
   try {
-    const response = await axiosInstance.get(endpoint,{
-        headers:{
-            Authorization:`Bearer ${token}`,
-        }
-    }); 
+    const response = await axiosInstance.get(endpoint); 
     console.log(response);
     
     dispatch(fetchDataSuccess(response.data.data));

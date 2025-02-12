@@ -71,7 +71,7 @@ function Filter() {
   };
 
   return (
-    <div className="relative flex max-h-screen overflow-y-scroll md:overflow-y-hidden scrollbar-hidden">
+    <div className="relative flex  max-h-screen overflow-y-scroll md:overflow-y-hidden scrollbar-hidden">
       {/* Sidebar for Desktop */}
       <div className="hidden sm:block w-72 bg-white p-3 border-r overflow-y-scroll  h-full scrollbar-hide">
         <h2 className="text-xl font-semibold mb-4">Filters</h2>
@@ -128,10 +128,10 @@ function Filter() {
           </select>
         </div>
 
-        <div className="flex justify-between ">
+        <div className="flex justify-evenly">
           <button
             onClick={applyFilters}
-            className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-orange-600"
+            className="bg-orange-500 text-white py-2 px-4 m-1 rounded hover:bg-orange-600"
           >
             Apply Filters
           </button>
@@ -146,7 +146,7 @@ function Filter() {
               });
               dispatch(resetFilter());
             }}
-            className="bg-orange-900 text-white py-2 px-4 rounded hover:bg-orange-600"
+            className="bg-orange-900 text-white py-2 px-4 m-1 rounded hover:bg-orange-600"
           >
             Reset
           </button>
@@ -156,7 +156,7 @@ function Filter() {
       {/* Button to open modal on mobile */}
       <button
         onClick={toggleModal}
-        className="bg-orange-600 text-white py-2 px-4 mb-4 sm:hidden w-full flex items-center justify-center space-x-2 hover:bg-orange-700 transition-colors"
+        className="bg-orange-600 text-white py-2 px-4 sm:hidden w-full flex items-center justify-center  hover:bg-orange-700 transition-colors"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"

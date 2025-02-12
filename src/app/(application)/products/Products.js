@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import ProductCard from "../../_components/ProductCard";
 import { getFilteredProducts, getProducts, getSearchedProduct } from "../../_service/ProductService";
 import Pagination from "../../_components/Pagination"; 
+import { Loader } from "@/app/_components/Loader";
 
 export default function Products(props) {
   const { filter, search } = useSelector((state) => state.generic.data);
@@ -40,8 +41,8 @@ export default function Products(props) {
   }, [filter, search, currentPage]);
 
   return (
-    <div className="w-full max-h-screen overflow-x-hidden overflow-y-scroll">
-      <div className="max-w-screen grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="m-2 max-w-screen max-h-screen  overflow-y-scroll scrollbar-hide">
+      <div className="max-w-full grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {loading ? (
           <p>Loading products...</p>
         ) : error ? (

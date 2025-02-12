@@ -61,11 +61,12 @@ export default function Header() {
         {/* Mobile Search Bar (Separate Line) */}
         <div className="block  lg:hidden mt-2 px-4">
           <SearchBar />
+
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden bg-gray-800 px-4 py-2 space-y-4">
+          <div className="lg:hidden bg-gray-800 px-1 py-2 space-y-1">
             <UserMenu />
             <Link href="/cart" className="ml-4 relative flex text-white text-sm hover:text-white">
               {CartIcon} <p className="ml-3">Cart</p>

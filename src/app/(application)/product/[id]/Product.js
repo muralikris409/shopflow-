@@ -11,6 +11,7 @@ import { createOrder } from '@/app/_service/OrderService';
 import { useRouter } from 'next/navigation';
 import { setProductData } from '@/app/_lib/utilReducer';
 import { useToast } from '@/hooks/use-toast';
+import { addProduct } from '@/app/_service/GuestCartService';
 export default function Product({ productId = 1 }) {
     const dispatch = useDispatch();
     const router = useRouter();
@@ -77,7 +78,7 @@ export default function Product({ productId = 1 }) {
                 const response = await userCartService.addItemToCart(isLoggedIn.id, product.id);
                 showMessage(response.message || 'Product added to your cart!', 'success');
             } else {
-                // Handle guest cart logic here
+                addProduct(product);
                 showMessage('Product added to your guest cart!', 'success');
             }
         } catch (error) {

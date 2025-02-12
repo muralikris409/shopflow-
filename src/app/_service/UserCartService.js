@@ -90,10 +90,10 @@ function UserCartService() {
     }
   };
 
-  this.deleteFromCart = async function(userId, productId) {
+  this.deleteFromCart = async function(productId) {
     try {
       const response = await axiosInstance.delete('/user/cart/deleteFromCart', {
-        params: { userId, productId },
+        params: {  productId },
         headers: getHeaders(),
       });
 
@@ -108,10 +108,10 @@ function UserCartService() {
     }
   };
 
-  this.updateCartCount = async function(userId, productId, operation) {
+  this.updateCartCount = async function( productId, operation) {
     try {
       const response = await axiosInstance.put('/user/cart/cartCount', {}, {
-        params: { userId, productId, operation },
+        params: {  productId, operation },
         headers: getHeaders(),
       });
       console.log(response.status)

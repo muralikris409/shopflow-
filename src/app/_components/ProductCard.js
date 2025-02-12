@@ -24,7 +24,7 @@ const ProductCard = ({ product}) => {
     //   passHref
     // >
     <div onClick={handleNavigation}>
-      <div className="relative max-h-30 m-5 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+      <div className="relative max-h-30 md:m-4 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
         <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
           <img
             className="object-cover w-full"

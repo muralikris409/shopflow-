@@ -10,7 +10,11 @@ export function loadCart() {
 export function saveCart(cart) {
   localStorage.setItem(cartKey, JSON.stringify(cart));
 }
-
+export function getTotalAmount(){
+      const cart=loadCart();
+      
+      return cart.reduce((a,c)=>a+c.offerPrice*c.quantity,0);
+}
 export function findProductIndex(cart, productId) {
   return cart.findIndex(item => item.id === productId);
 }
@@ -44,6 +48,7 @@ export function increaseQuantity(productId) {
     cart[productIndex].quantity += 1;
     saveCart(cart);
   }
+  console.log(loadCart())
 }
 
 export function decreaseQuantity(productId) {

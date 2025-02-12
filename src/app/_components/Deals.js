@@ -13,9 +13,9 @@ async function Deals({ fetchData, title }) {
   products = products.data;
 
   return (
-    <section className="mt-5 flex justify-center w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-2/3 bg-gray-100 py-10 rounded-lg shadow-lg">
-      <div className="w-full max-w-screen-md px-6 py-4">
-        <h1 className="text-center text-3xl font-bold text-blue-600">
+    <section className="mt-2 flex justify-center w-full sm:w-3/4 md:w-2/3 lg:w-1/2 xl:w-2/3 bg-gray-100 py-4 rounded-lg shadow-lg">
+      <div className="w-full max-w-screen-md px-6">
+        <h1 className="text-center text-3xl font-bold text-gray-800">
           {title}
         </h1>
         <div className="mt-6 max-h-96 overflow-y-auto scrollbar-hide px-2">

@@ -278,7 +278,7 @@ const OrderSummary = ({ title ,orderId}) => {
             className="text-blue-600 underline mt-2"
             onClick={() => setShowForm(!showForm)}
           >
-            {showForm ? 'Cancel' : '+ Add New Address'}
+            {showForm ? '' : '+ Add New Address'}
           </button>
   
           {showForm && (
@@ -298,6 +298,21 @@ const OrderSummary = ({ title ,orderId}) => {
                   {formErrors[key] && <p className="text-sm text-red-500 mt-1">{formErrors[key]}</p>}
                 </div>
               ))}
+              <button
+                className="bg-red-600 mx-2 text-white py-2 px-4 rounded mt-2 hover:bg-red-700"
+                onClick={()=>{
+                  setShowForm(false);
+              setNewAddress({
+          street: '',
+          city: '',
+          state: '',
+          country: '',
+          zip: '',
+        });
+                }}
+              >
+                cancel
+              </button>
               <button
                 className="bg-gray-800 text-white py-2 px-4 rounded mt-2 hover:bg-gray-700"
                 onClick={handleAddAddress}

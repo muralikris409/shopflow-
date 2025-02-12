@@ -31,11 +31,11 @@ export default function Products({ id }) {
   }, [filter, id]);
 
   return (
-    <Link href={""} className="container mx-auto max-h-screen p-4 overflow-x-hidden overflow-y-scroll">
+    <Link href={""} className="container max-h-screen overflow-x-hidden overflow-y-scroll scrollbar-hide">
       {error ? (
         <p className="text-red-500 text-center">{error}</p>
       ) : subcategories?.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
           {subcategories.map((subcategory) => (
            <Link key={subcategory.id} href={`/product/${subcategory.id}`}>
                   <ProductCard product={subcategory} />  
