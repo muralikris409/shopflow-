@@ -1242,10 +1242,6 @@ body {
   max-width: 72rem;
 }
 
-.max-w-7xl {
-  max-width: 80rem;
-}
-
 .max-w-full {
   max-width: 100%;
 }
@@ -1493,17 +1489,6 @@ body {
   margin-bottom: calc(1rem * var(--tw-space-y-reverse));
 }
 
-.divide-y > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-y-reverse: 0;
-  border-top-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
-  border-bottom-width: calc(1px * var(--tw-divide-y-reverse));
-}
-
-.divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
-  --tw-divide-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-divide-opacity, 1));
-}
-
 .self-start {
   align-self: flex-start;
 }
@@ -1574,16 +1559,6 @@ body {
   border-radius: .75rem;
 }
 
-.rounded-l {
-  border-top-left-radius: .25rem;
-  border-bottom-left-radius: .25rem;
-}
-
-.rounded-r {
-  border-top-right-radius: .25rem;
-  border-bottom-right-radius: .25rem;
-}
-
 .rounded-t-lg {
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
@@ -1623,10 +1598,6 @@ body {
 
 .border-dashed {
   border-style: dashed;
-}
-
-.border-double {
-  border-style: double;
 }
 
 .border-blue-500 {
@@ -1678,12 +1649,6 @@ body {
 
 .border-transparent {
   border-color: #0000;
-}
-
-.border-x-orange-500 {
-  --tw-border-opacity: 1;
-  border-left-color: rgb(249 115 22 / var(--tw-border-opacity, 1));
-  border-right-color: rgb(249 115 22 / var(--tw-border-opacity, 1));
 }
 
 .border-l-transparent {
@@ -2608,11 +2573,6 @@ body {
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
 }
 
-.hover\:bg-gray-900:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(17 24 39 / var(--tw-bg-opacity, 1));
-}
-
 .hover\:bg-orange-200:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(254 215 170 / var(--tw-bg-opacity, 1));
@@ -2695,11 +2655,6 @@ body {
 .hover\:text-orange-500:hover {
   --tw-text-opacity: 1;
   color: rgb(249 115 22 / var(--tw-text-opacity, 1));
-}
-
-.hover\:text-red-600:hover {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity, 1));
 }
 
 .hover\:text-white:hover {

@@ -48,7 +48,7 @@
       "static/chunks/_e69f0d._.js",
       "static/chunks/_d95469._.js"
     ],
-    "/(application)/product/[id]/page": [
+    "/(application)/user/profile/page": [
       "static/chunks/_df74ce._.js",
       "static/chunks/src_app_icon_png_mjs_f06f12._.js",
       "static/chunks/[root of the server]__640589._.css",
@@ -61,9 +61,9 @@
       "static/chunks/src_app_layout_61af54.js",
       "static/chunks/src_app_not-found_291378.js",
       "static/chunks/src_app_not-found_d1c2d6.js",
-      "static/chunks/node_modules_fb48f4._.js",
-      "static/chunks/src_app_cc7228._.js",
-      "static/chunks/src_app_(application)_product_[id]_page_d1c2d6.js",
+      "static/chunks/_cc3f05._.js",
+      "static/chunks/src_app_(application)_2df10f._.js",
+      "static/chunks/src_app_(application)_user_profile_page_d1c2d6.js",
       "static/chunks/node_modules_next_dist_compiled_react-dom_1f56dc._.js",
       "static/chunks/node_modules_next_dist_compiled_107ce8._.js",
       "static/chunks/node_modules_next_dist_client_523921._.js",

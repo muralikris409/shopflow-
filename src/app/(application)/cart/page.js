@@ -28,7 +28,7 @@ const Cart = () => {
   const isLoggedIn = useSelector((state) => state.userData?.user);
   const router = useRouter();
   const cartItems=useSelector(state=>state.cart.items);
-  const totalBill=useSelector(state=>state.cart.totalAmount);
+  const totalBill=useSelector(state=>state.cart.totalAmount)||0;
   const [products, setProducts] = useState(isLoggedIn?  cartItems:[]); 
   const [totalAmount, setTotalAmount] = useState(totalBill||0);
   const error = useSelector((state) => state.cart.error);
@@ -62,7 +62,7 @@ const Cart = () => {
   const handleCheckout = async () => {
     setLoadingCheckout(true);
     try {
-      const items = products.map((product) => ({
+      const items = products?.map((product) => ({
         productId: product.productId || product.id,
         quantity: product.quantity,
       }));
@@ -123,7 +123,7 @@ const Cart = () => {
               <Card>
                 <CardContent className="p-4">
                   <ul className="space-y-4">
-                    {products.map((product, index) => (
+                    {products?.map((product, index) => (
                       <CartTile
                         key={index}
                         handleNavigation={handleNavigation}
