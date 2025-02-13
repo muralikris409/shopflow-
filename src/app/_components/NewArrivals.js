@@ -33,7 +33,7 @@ const NewArrivals = () => {
     
 
     return (
-        <div className="p-8 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white">
+        <div className="p-4 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white">
 <h2 className="text-3xl text-white-50 font-bold mb-6 text-shadow-glow">
   New Arrivals
 </h2>
@@ -43,7 +43,7 @@ const NewArrivals = () => {
                         <div
                         onClick={()=>handleNavigation(product)}
                             key={index}
-                            className="w-64 p-4 bg-white rounded-lg shadow-lg text-gray-800 transform hover:scale-105 transition-transform"
+                            className="w-64 max-h-72 p-4 bg-white  rounded-lg shadow-lg text-gray-800 transform hover:scale-95 transition-transform"
                         >
                             <img
                                 src={product.image}
@@ -51,8 +51,9 @@ const NewArrivals = () => {
                                 className="w-full h-40 object-cover rounded-t-lg"
                             />
                             <div className="p-4">
-                                <h3 className="text-lg font-bold">{product.name}</h3>
-                                <p className="text-sm text-gray-600">{product.description}</p>
+                            <h3 className="text-lg font-bold truncate">{product.name}</h3>
+                            <p className="text-sm text-gray-600 truncate">{product.description}</p>
+                             
                                 <div className="mt-2">
                                     <span className="text-xl font-bold text-blue-600">
                                         ${product.offerPrice}

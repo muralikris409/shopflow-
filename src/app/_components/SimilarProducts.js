@@ -43,7 +43,7 @@ const SimilarProducts = ({ subCategoryId }) => {
         {products.map((product) => (
           <div key={product.id} className="min-w-[220px] bg-white shadow-lg rounded-lg p-4 transition-transform transform hover:scale-105">
             <img src={product.image} alt={product.name} className="h-40 w-full object-cover rounded-md mb-2" />
-            <h3 className="text-lg font-semibold">{product.name}</h3>
+            <h3 className="text-lg font-semibold truncate">{product.name}</h3>
             <p className="text-gray-700">${product.offerPrice.toFixed(2)}</p>
             <button 
               onClick={() => handleNavigation(product)} 

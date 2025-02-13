@@ -35,6 +35,7 @@ const EditProfile = () => {
   const validateFields = () => {
     let newErrors = {};
     if (!fieldData.name.trim()) newErrors.name = "Name is required.";
+    if (fieldData.name?.length>16) newErrors.name = "Name should be less than 18 characters.";
     if (!/^\d{10}$/.test(fieldData.phone))
       newErrors.phone = "Phone number must be 10 digits.";
 

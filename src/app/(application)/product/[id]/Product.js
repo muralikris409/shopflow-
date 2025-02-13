@@ -141,7 +141,7 @@ export default function Product({ productId = 1 }) {
                     </div>
 
                     {/* Description */}
-                    <p className="text-gray-600 text-sm">{product.description}</p>
+                    <p className="text-gray-600 text-sm h-48 shadow-sm overflow-y-auto scrollbar-hide p-2 rounded-md">{product.description}</p>
 
                     {/* Actions */}
                     <div className="flex flex-col sm:flex-row gap-3 justify-self-end">

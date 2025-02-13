@@ -14,7 +14,7 @@ export default async function Home()  {
   try { 
     products = await getProducts(1);
   } catch (err) {
-    error = err;
+  
     console.log(err)
   }
   products=products.data;
@@ -22,10 +22,10 @@ export default async function Home()  {
   return (
     <>
    <div className="flex flex-col items-center">
-  <div className="w-full  mb-1 p-5 bg-gray-100 rounded-lg shadow-md">
+  <div className="w-full  mb-1 p-2 md:p-4 bg-gray-100 rounded-lg shadow-md">
     <BannerSection />
   </div>
-  <div className="w-full p-5 bg-white rounded-lg shadow-md">
+  <div className="w-full p-1 md:p-4 bg-white rounded-lg shadow-md">
     <CustomCarousel />
   </div>
 </div>

@@ -1050,35 +1050,38 @@ function SearchBar() {
         state
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "w-full md:px-10 md:bg-transparent lg:w-3/4 bg-white  rounded-lg",
+        className: "w-full md:px-10 md:bg-transparent lg:w-3/4   rounded-lg",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
             className: "relative text-gray-900 flex items-center",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Input"], {
                     ref: ref,
+                    style: {
+                        outline: "none"
+                    },
                     type: "text",
                     placeholder: "Search for products...",
-                    className: "w-full"
+                    className: "w-full border-transparent focus:border-transparent focus:ring-0 focus:outline-none"
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/header/SearchBar.js",
                     lineNumber: 29,
-                    columnNumber: 9
+                    columnNumber: 7
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                     onClick: handleSearch,
-                    className: "bg-gray-50 md:bg-transparent ",
+                    className: "bg-gray-900 ml-2 md:bg-transparent ",
                     variant: "default",
                     size: "icon",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaSearch"], {
-                        className: "text-sm md:text-base text-gray-900 md:text-white "
+                        className: "text-sm md:text-base text-white "
                     }, void 0, false, {
                         fileName: "[project]/src/app/_components/header/SearchBar.js",
-                        lineNumber: 36,
+                        lineNumber: 38,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/_components/header/SearchBar.js",
-                    lineNumber: 35,
+                    lineNumber: 37,
                     columnNumber: 9
                 }, this)
             ]

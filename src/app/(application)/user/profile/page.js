@@ -30,8 +30,8 @@ const UserProfile = () => {
     )}
   </div>
   <div className="ml-2">
-    <h2 className="text-lg font-semibold text-gray-700">{user?.name}</h2>
-    <p className="text-sm text-gray-500">{user?.email}</p>
+    <h2 className="text-lg font-semibold text-gray-700 truncate">{user?.name}</h2>
+    <p className="text-sm text-gray-500 truncate">{user?.email}</p>
   </div>
 </div>
 

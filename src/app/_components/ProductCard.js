@@ -23,8 +23,7 @@ const ProductCard = ({ product}) => {
     //   // as={`products/${product.name}`}
     //   passHref
     // >
-    <div onClick={handleNavigation}>
-      <div className="relative max-h-30 md:m-4 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+      <div onClick={handleNavigation} className="relative max-h-[82.5rem] md:m-4 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
         <div className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl">
           <img
             className="object-cover w-full"
@@ -38,7 +37,7 @@ const ProductCard = ({ product}) => {
           )}
         </div>
         <div className="mt-1 px-5 pb-5">
-          <h5 className="text-xl tracking-tight text-slate-900">
+          <h5 className="text-xl tracking-tight text-slate-900 truncate">
             {product.name || "Unnamed Product"}
           </h5>
           <div className="mt-1 flex items-center justify-between">
@@ -87,8 +86,7 @@ const ProductCard = ({ product}) => {
         
         </div>
       </div>
-    {/* // </Link> */}
-    </div>
+
   );
 };
 

@@ -24,16 +24,18 @@ export default function SearchBar() {
   }, [state]);
 
   return (
-    <div className="w-full md:px-10 md:bg-transparent lg:w-3/4 bg-white  rounded-lg">
+    <div className="w-full md:px-10 md:bg-transparent lg:w-3/4   rounded-lg">
       <div className="relative text-gray-900 flex items-center">
-        <Input
-          ref={ref}
-          type="text"
-          placeholder="Search for products..."
-          className="w-full"
-        />
-        <Button onClick={handleSearch} className="bg-gray-50 md:bg-transparent " variant="default" size="icon">
-          <FaSearch className="text-sm md:text-base text-gray-900 md:text-white " />
+      <Input
+  ref={ref}
+  style={{outline:"none"}}
+  type="text"
+  placeholder="Search for products..."
+  className="w-full border-transparent focus:border-transparent focus:ring-0 focus:outline-none"
+/>
+
+        <Button onClick={handleSearch} className="bg-gray-900 ml-2 md:bg-transparent " variant="default" size="icon">
+          <FaSearch className="text-sm md:text-base text-white " />
         </Button>
       </div>
     </div>

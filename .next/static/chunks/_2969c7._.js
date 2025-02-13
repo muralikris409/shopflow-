@@ -306,6 +306,7 @@ const EditProfile = ()=>{
     const validateFields = ()=>{
         let newErrors = {};
         if (!fieldData.name.trim()) newErrors.name = "Name is required.";
+        if (fieldData.name?.length > 16) newErrors.name = "Name should be less than 18 characters.";
         if (!/^\d{10}$/.test(fieldData.phone)) newErrors.phone = "Phone number must be 10 digits.";
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
@@ -369,7 +370,7 @@ const EditProfile = ()=>{
                 children: "Edit Profile"
             }, void 0, false, {
                 fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                lineNumber: 92,
+                lineNumber: 93,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -387,14 +388,14 @@ const EditProfile = ()=>{
                                     className: "w-full h-full object-cover"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                    lineNumber: 98,
+                                    lineNumber: 99,
                                     columnNumber: 15
                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "text-3xl font-bold text-gray-500",
                                     children: user?.name?.charAt(0)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                    lineNumber: 100,
+                                    lineNumber: 101,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -405,7 +406,7 @@ const EditProfile = ()=>{
                                             children: "Edit ✎"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 103,
+                                            lineNumber: 104,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -416,24 +417,24 @@ const EditProfile = ()=>{
                                             className: "hidden"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 104,
+                                            lineNumber: 105,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                    lineNumber: 102,
+                                    lineNumber: 103,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                            lineNumber: 96,
+                            lineNumber: 97,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                        lineNumber: 95,
+                        lineNumber: 96,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -448,7 +449,7 @@ const EditProfile = ()=>{
                                         children: "Name"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 111,
+                                        lineNumber: 112,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -461,7 +462,7 @@ const EditProfile = ()=>{
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 112,
+                                        lineNumber: 113,
                                         columnNumber: 13
                                     }, this),
                                     errors.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -469,13 +470,13 @@ const EditProfile = ()=>{
                                         children: errors.name
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 121,
+                                        lineNumber: 122,
                                         columnNumber: 29
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                lineNumber: 110,
+                                lineNumber: 111,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -489,7 +490,7 @@ const EditProfile = ()=>{
                                             children: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 126,
+                                            lineNumber: 127,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -502,7 +503,7 @@ const EditProfile = ()=>{
                                             placeholder: "Email"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 127,
+                                            lineNumber: 128,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -510,18 +511,18 @@ const EditProfile = ()=>{
                                             children: "Email can't be changed"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 136,
+                                            lineNumber: 137,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                    lineNumber: 125,
+                                    lineNumber: 126,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                lineNumber: 124,
+                                lineNumber: 125,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -533,7 +534,7 @@ const EditProfile = ()=>{
                                         children: "Phone"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 143,
+                                        lineNumber: 144,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -546,7 +547,7 @@ const EditProfile = ()=>{
                                         required: true
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 144,
+                                        lineNumber: 145,
                                         columnNumber: 13
                                     }, this),
                                     errors.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -554,19 +555,19 @@ const EditProfile = ()=>{
                                         children: errors.phone
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 153,
+                                        lineNumber: 154,
                                         columnNumber: 30
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                lineNumber: 142,
+                                lineNumber: 143,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                        lineNumber: 109,
+                        lineNumber: 110,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -578,24 +579,24 @@ const EditProfile = ()=>{
                             children: loading ? "Saving..." : "Save Changes"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                            lineNumber: 158,
+                            lineNumber: 159,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                        lineNumber: 157,
+                        lineNumber: 158,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                lineNumber: 94,
+                lineNumber: 95,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-        lineNumber: 91,
+        lineNumber: 92,
         columnNumber: 5
     }, this);
 };

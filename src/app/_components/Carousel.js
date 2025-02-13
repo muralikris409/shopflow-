@@ -61,7 +61,6 @@ export const CustomCarousel = () => {
         fetchData();
     }, []);
 
-    // Carousel auto-slide effect
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length);
@@ -74,7 +73,7 @@ export const CustomCarousel = () => {
     const goToPrevious = () => setCurrentIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length);
      console.log(items);
     return (
-        <div className="relative w-full h-96 m-0 bg-gray-900 overflow-hidden" data-carousel="slide">
+        <div className="relative w-full h-48 md:h-96  m-0 bg-gray-900 overflow-hidden" data-carousel="slide">
             {items.length > 0 ? (
                 <>
                     <div className="relative h-full overflow-hidden">
@@ -84,11 +83,11 @@ export const CustomCarousel = () => {
                                 item={item}
                                 isActive={index === currentIndex}
                                 onClick={function(){
-                                    const copiedItem = { ...item }; // Shallow copy
+                                    const copiedItem = { ...item }; 
     handleNavigate(copiedItem.type, copiedItem.type_id); 
     console.log(item)
                                 }
-                                } // Pass correct type and id dynamically
+                                } 
                             />
                         ))}
                     </div>
