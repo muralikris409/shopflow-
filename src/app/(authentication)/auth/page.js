@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { signIn, useSession } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { googleOAuth, login, signUp } from "@/app/_service/UserService";
@@ -17,7 +17,8 @@ const AuthForm = () => {
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
   console.log(useSession());
-  const {token,user,status}=useSession();
+  const {data:token,status}=useSession();
+  console.log(token)
   const dispatch = useDispatch();
   const historyRoute = useSelector(state => state?.utils?.history?.route);
   const router = useRouter();
@@ -37,7 +38,7 @@ const AuthForm = () => {
   const syncUser = () => {
     const cookies = parseCookies();
 
-    const {token} = cookies.shopflow_session;
+    const { token } = cookies.shopflow_session ?? {};
     if (token) {
       try {
         dispatch(fetchData(`user/userProfileInfo`, token));
@@ -110,12 +111,13 @@ const AuthForm = () => {
 
   const handleGoogleLogin = async () => {
     try {
-      const res=await signIn("google");
-      await googleOAuth(token);
-      syncUser();
+   
+    await signIn("google", { redirect: false });
+    await googleOAuth(token.token);
+    syncUser();
       
 
-      // router.push("/");
+      router.push("/");
     } catch (error) {
       console.error("Google login error:", error);
       // alert(JSON.stringify(error));

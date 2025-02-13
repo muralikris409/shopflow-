@@ -52,9 +52,9 @@ async function login(formdata, ctx = null) {
 async function googleOAuth(data, ctx = null) {
     try {
         const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["axiosInstance"].post("user/oauth", {
-            ...data
+            ...data,
+            id: data.sub
         });
-        console.log("google auth b-end res after gauth", response);
         const { token, data: user } = response.data;
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nookies$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setCookie"])(ctx, "shopflow_session", JSON.stringify({
             token
@@ -65,6 +65,7 @@ async function googleOAuth(data, ctx = null) {
         });
         return response.data;
     } catch (error) {
+        alert(error);
         throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
     }
 }
