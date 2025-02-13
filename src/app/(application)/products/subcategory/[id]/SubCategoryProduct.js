@@ -31,7 +31,7 @@ export default function Products({ id }) {
   }, [filter, id]);
 
   return (
-    <Link href={""} className="container max-h-screen overflow-x-hidden overflow-y-scroll scrollbar-hide">
+    <Link href={""} className="container p-3 md:p-0  max-h-screen overflow-x-hidden overflow-y-scroll scrollbar-hide">
       {error ? (
         <p className="text-red-500 text-center">{error}</p>
       ) : subcategories?.length > 0 ? (

@@ -124,7 +124,6 @@ export default function Product({ productId = 1 }) {
                 {/* Right - Details Section */}
                 <div className="lg:w-3/5 p-6 flex flex-col gap-4">
                     <h1 className="text-2xl font-bold text-gray-800">{product.name}</h1>
-
                     {/* Rating */}
                     <div className="flex items-center gap-2">
                         <span className="bg-orange-500 text-white px-2 py-1 rounded text-sm font-semibold flex items-center">

@@ -22,7 +22,7 @@ export const config = {
     "/orders/:path*", 
     "/checkout",
     "/checkout/:path*", 
-    "/wishlist", 
-    "/user/:path"
+    "/wishlist",
+    "/user/:path",
   ],
 };

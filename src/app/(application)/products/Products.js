@@ -41,8 +41,8 @@ export default function Products(props) {
   }, [filter, search, currentPage]);
 
   return (
-    <div className="m-2 max-w-screen max-h-screen overflow-x-hidden overflow-y-scroll scrollbar-hide">
-      <div className="grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+    <div className="m-2 max-w-screen   max-h-screen  overflow-x-hidden overflow-y-scroll scrollbar-hide">
+      <div className="w-full overflow-hidden bg-white  grid sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {loading ? (
           <p>Loading products...</p>
         ) : error ? (

@@ -73,7 +73,7 @@ function Filter() {
   return (
     <div className="relative flex  max-h-screen overflow-y-scroll md:overflow-y-hidden scrollbar-hidden">
       {/* Sidebar for Desktop */}
-      <div className="hidden sm:block w-72 bg-white p-3 border-r overflow-y-scroll  h-full scrollbar-hide">
+      <div className="hidden sm:block max-w-72 bg-white p-3 border-r overflow-y-scroll  h-full scrollbar-hide">
         <h2 className="text-xl font-semibold mb-4">Filters</h2>
         <h3 className="text-lg font-medium mb-2">Categories</h3>
         <div className="mb-6 overflow-y-scroll max-h-72 scrollbar-hide">
