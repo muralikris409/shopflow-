@@ -54,18 +54,24 @@ const AuthForm = () => {
       ? ["email", "password"]
       : ["email", "password", "confirmPassword", "username"];
 
-    requiredFields.forEach((field) => {
-      if (!formData[field]) {
-        validationErrors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} is required`;
-      } else if (field === "email") {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData[field])) {
-          validationErrors[field] = "Invalid email format";
+      requiredFields.forEach((field) => {
+        if (!formData[field]) {
+          validationErrors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} is required`;
+        } else if (field === "email") {
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(formData[field])) {
+            validationErrors[field] = "Invalid email format";
+          }
+        } else if (field === "password") {
+          const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+          if (!passwordRegex.test(formData[field])) {
+            validationErrors[field] = "Password must be at least 8 characters long, include an uppercase letter, a number, and a special character";
+          }
+        } else if (field === "confirmPassword" && formData.password !== formData.confirmPassword) {
+          validationErrors[field] = "Passwords do not match";
         }
-      } else if (field === "confirmPassword" && formData.password !== formData.confirmPassword) {
-        validationErrors[field] = "Passwords do not match";
-      }
-    });
+      });
+      
 
     return validationErrors;
   };
