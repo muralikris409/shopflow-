@@ -64,7 +64,7 @@ const AuthForm = () => {
           }
         } else if (field === "password") {
           const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-          if (!passwordRegex.test(formData[field])) {
+          if (!passwordRegex.test(formData[field])&&!isLogin) {
             validationErrors[field] = "Password must be at least 8 characters long, include an uppercase letter, a number, and a special character";
           }
         } else if (field === "confirmPassword" && formData.password !== formData.confirmPassword) {
