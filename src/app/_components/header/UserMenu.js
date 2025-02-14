@@ -61,7 +61,7 @@ export default function UserMenu() {
             <AvatarImage src={userData?.profile_pic || '/_assets/user.png'} alt="User  Profile" />
             <AvatarFallback>U</AvatarFallback>
           </Avatar>
-          <span className="font-medium  hover:text-orange-500 group-hover:text-orange-500">
+          <span className="font-medium text-white   hover:text-orange-500 group-hover:text-orange-500">
             {userData?.name || 'Sign in'}
           </span>
         </Button>
