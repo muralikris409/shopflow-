@@ -36,13 +36,10 @@ export async function googleOAuth(data, ctx = null) {
 
         setCookie(ctx, "shopflow_session", JSON.stringify({ token }), {
             maxAge: 30 * 24 * 60 * 60,
-            path: '/',
-            sameSite: 'lax',
         });
 
         return response.data;
     } catch (error) {
-      alert(error);
         throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
     }
 }

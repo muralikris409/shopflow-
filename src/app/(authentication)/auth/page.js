@@ -35,18 +35,7 @@ const AuthForm = () => {
     setErrors({ ...errors, [field]: "" });
   };
 
-  const syncUser = () => {
-    const cookies = parseCookies();
 
-    const { token } = cookies.shopflow_session ?? {};
-    if (token) {
-      try {
-        dispatch(fetchData(`user/userProfileInfo`, token));
-      } catch (error) {
-        console.error("Failed to parse user data from cookies:", error);
-      }
-    }
-  };
 
   const validate = () => {
     const validationErrors = {};
@@ -91,7 +80,6 @@ const AuthForm = () => {
         setLoading(true);
         const response = await login(formData);
         console.log(response)
-        syncUser();
         if (historyRoute) {
           historyRoute.includes("product") ? router.push(`${historyRoute}`) : router.push("/cart");
         } else {
@@ -121,23 +109,16 @@ const AuthForm = () => {
    
     await signIn("google", { redirect: false });
     await googleOAuth(token.token);
-    syncUser();
-      
-
-      router.push("/");
+    router.push("/");
+    router.refresh();
     } catch (error) {
       console.error("Google login error:", error);
-      // alert(JSON.stringify(error));
       setErrors({ form:error.message|| "An unexpected error occurred. Please try again." });
       setSuccess(null);
     }
   };
 
-  useEffect(() => {
-    if (status === "authenticated") {
-      syncUser();
-    }
-  }, [status]);
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <div className="bg-white p-6 rounded-lg shadow-md w-full max-w-sm">
