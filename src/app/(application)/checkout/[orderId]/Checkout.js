@@ -75,8 +75,8 @@ const OrderSummary = ({ title ,orderId}) => {
   };
 
   const validatePhone = () => {
-    if (!phone.trim() || !/^\d{10}$/.test(phone)) {
-      return 'Valid phone number is required (10 digits).';
+    if (!phone.trim() || !/^[6-9]\d{9}$/.test(phone)) {
+      return 'Phone number must be 10 digits and start with 6, 7, 8, or 9.';
     }
     return '';
   };
@@ -86,36 +86,27 @@ const OrderSummary = ({ title ,orderId}) => {
     if (!value?.trim()) {
       error = `${name.replace(/([A-Z])/g, ' $1')} is required.`;
     } else {
-      const validateField = (name, value) => {
-        let error = '';
-        if (!value?.trim()) {
-          error = `${name.replace(/([A-Z])/g, ' $1')} is required.`;
-        } else {
-          switch (name) {
-            case 'zip':
-              if (!/^[0-9]{5,6}$/.test(value)) {
-                error = 'ZIP code must be 5-6 digits.';
-              }
-              break;
-            case 'city':
-            case 'state':
-            case 'country':
-              if (!/^[A-Za-z\s]+$/.test(value)) {
-                error = `Invalid ${name.replace(/([A-Z])/g, ' $1')}`;
-              }
-              break;
-            default:
-              break;
+      switch (name) {
+        case 'zip':
+          if (!/^[0-9]{5,6}$/.test(value)) {
+            error = 'ZIP code must be 5-6 digits.';
           }
-        }
-        setFormErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
-        return !error;
-      };
-      
+          break;
+        case 'city':
+        case 'state':
+        case 'country':
+          if (!/^[A-Za-z\s]+$/.test(value)) {
+            error = `Invalid ${name.replace(/([A-Z])/g, ' $1')}`;
+          }
+          break;
+        default:
+          break;
+      }
     }
     setFormErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
     return !error;
   };
+  
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;

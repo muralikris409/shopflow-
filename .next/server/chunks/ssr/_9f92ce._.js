@@ -501,8 +501,8 @@ const OrderSummary = ({ title, orderId })=>{
         }
     };
     const validatePhone = ()=>{
-        if (!phone.trim() || !/^\d{10}$/.test(phone)) {
-            return 'Valid phone number is required (10 digits).';
+        if (!phone.trim() || !/^[6-9]\d{9}$/.test(phone)) {
+            return 'Phone number must be 10 digits and start with 6, 7, 8, or 9.';
         }
         return '';
     };
@@ -511,34 +511,22 @@ const OrderSummary = ({ title, orderId })=>{
         if (!value?.trim()) {
             error = `${name.replace(/([A-Z])/g, ' $1')} is required.`;
         } else {
-            const validateField = (name, value)=>{
-                let error = '';
-                if (!value?.trim()) {
-                    error = `${name.replace(/([A-Z])/g, ' $1')} is required.`;
-                } else {
-                    switch(name){
-                        case 'zip':
-                            if (!/^[0-9]{5,6}$/.test(value)) {
-                                error = 'ZIP code must be 5-6 digits.';
-                            }
-                            break;
-                        case 'city':
-                        case 'state':
-                        case 'country':
-                            if (!/^[A-Za-z\s]+$/.test(value)) {
-                                error = `Invalid ${name.replace(/([A-Z])/g, ' $1')}`;
-                            }
-                            break;
-                        default:
-                            break;
+            switch(name){
+                case 'zip':
+                    if (!/^[0-9]{5,6}$/.test(value)) {
+                        error = 'ZIP code must be 5-6 digits.';
                     }
-                }
-                setFormErrors((prevErrors)=>({
-                        ...prevErrors,
-                        [name]: error
-                    }));
-                return !error;
-            };
+                    break;
+                case 'city':
+                case 'state':
+                case 'country':
+                    if (!/^[A-Za-z\s]+$/.test(value)) {
+                        error = `Invalid ${name.replace(/([A-Z])/g, ' $1')}`;
+                    }
+                    break;
+                default:
+                    break;
+            }
         }
         setFormErrors((prevErrors)=>({
                 ...prevErrors,
@@ -659,7 +647,7 @@ const OrderSummary = ({ title, orderId })=>{
                 children: error
             }, void 0, false, {
                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                lineNumber: 238,
+                lineNumber: 229,
                 columnNumber: 17
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -670,7 +658,7 @@ const OrderSummary = ({ title, orderId })=>{
                         children: title
                     }, void 0, false, {
                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                        lineNumber: 241,
+                        lineNumber: 232,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -681,7 +669,7 @@ const OrderSummary = ({ title, orderId })=>{
                                 children: "Phone Number"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                lineNumber: 245,
+                                lineNumber: 236,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -692,7 +680,7 @@ const OrderSummary = ({ title, orderId })=>{
                                 placeholder: "Enter your 10-digit phone number"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                lineNumber: 248,
+                                lineNumber: 239,
                                 columnNumber: 11
                             }, this),
                             phoneError && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -700,13 +688,13 @@ const OrderSummary = ({ title, orderId })=>{
                                 children: phoneError
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                lineNumber: 258,
+                                lineNumber: 249,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                        lineNumber: 244,
+                        lineNumber: 235,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -717,7 +705,7 @@ const OrderSummary = ({ title, orderId })=>{
                                 children: "Select Delivery Address"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                lineNumber: 264,
+                                lineNumber: 255,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -733,7 +721,7 @@ const OrderSummary = ({ title, orderId })=>{
                                                 className: "mr-4 h-5 w-5 accent-blue-500 cursor-pointer"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                lineNumber: 275,
+                                                lineNumber: 266,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -744,7 +732,7 @@ const OrderSummary = ({ title, orderId })=>{
                                                         children: address.street
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                        lineNumber: 283,
+                                                        lineNumber: 274,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -752,24 +740,24 @@ const OrderSummary = ({ title, orderId })=>{
                                                         children: `${address.city}, ${address.state}, ${address.zip}`
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                        lineNumber: 286,
+                                                        lineNumber: 277,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                lineNumber: 282,
+                                                lineNumber: 273,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, address.id, true, {
                                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                        lineNumber: 267,
+                                        lineNumber: 258,
                                         columnNumber: 15
                                     }, this))
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                lineNumber: 265,
+                                lineNumber: 256,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -778,7 +766,7 @@ const OrderSummary = ({ title, orderId })=>{
                                 children: showForm ? '' : '+ Add New Address'
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                lineNumber: 294,
+                                lineNumber: 285,
                                 columnNumber: 11
                             }, this),
                             showForm && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -793,7 +781,7 @@ const OrderSummary = ({ title, orderId })=>{
                                                     children: key.replace(/([A-Z])/g, ' $1')
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                    lineNumber: 305,
+                                                    lineNumber: 296,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -806,7 +794,7 @@ const OrderSummary = ({ title, orderId })=>{
                                                     placeholder: `Enter ${key.replace(/([A-Z])/g, ' $1').toLowerCase()}`
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                    lineNumber: 306,
+                                                    lineNumber: 297,
                                                     columnNumber: 19
                                                 }, this),
                                                 formErrors[key] && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -814,13 +802,13 @@ const OrderSummary = ({ title, orderId })=>{
                                                     children: formErrors[key]
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                    lineNumber: 315,
+                                                    lineNumber: 306,
                                                     columnNumber: 39
                                                 }, this)
                                             ]
                                         }, key, true, {
                                             fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                            lineNumber: 304,
+                                            lineNumber: 295,
                                             columnNumber: 17
                                         }, this)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -838,7 +826,7 @@ const OrderSummary = ({ title, orderId })=>{
                                         children: "cancel"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                        lineNumber: 318,
+                                        lineNumber: 309,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -847,19 +835,19 @@ const OrderSummary = ({ title, orderId })=>{
                                         children: "Save Address"
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                        lineNumber: 333,
+                                        lineNumber: 324,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                lineNumber: 302,
+                                lineNumber: 293,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                        lineNumber: 263,
+                        lineNumber: 254,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -870,7 +858,7 @@ const OrderSummary = ({ title, orderId })=>{
                                 children: "Order Summary"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                lineNumber: 345,
+                                lineNumber: 336,
                                 columnNumber: 11
                             }, this),
                             orderData?.map((item, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -882,7 +870,7 @@ const OrderSummary = ({ title, orderId })=>{
                                             alt: item.product?.name
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                            lineNumber: 348,
+                                            lineNumber: 339,
                                             columnNumber: 15
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -893,7 +881,7 @@ const OrderSummary = ({ title, orderId })=>{
                                                     children: item.product?.name
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                    lineNumber: 354,
+                                                    lineNumber: 345,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -901,7 +889,7 @@ const OrderSummary = ({ title, orderId })=>{
                                                     children: item.product?.description
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                    lineNumber: 355,
+                                                    lineNumber: 346,
                                                     columnNumber: 17
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -914,19 +902,19 @@ const OrderSummary = ({ title, orderId })=>{
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                                    lineNumber: 356,
+                                                    lineNumber: 347,
                                                     columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                            lineNumber: 353,
+                                            lineNumber: 344,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, index, true, {
                                     fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                    lineNumber: 347,
+                                    lineNumber: 338,
                                     columnNumber: 13
                                 }, this)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -939,18 +927,18 @@ const OrderSummary = ({ title, orderId })=>{
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                    lineNumber: 361,
+                                    lineNumber: 352,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                                lineNumber: 360,
+                                lineNumber: 351,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                        lineNumber: 344,
+                        lineNumber: 335,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -962,24 +950,24 @@ const OrderSummary = ({ title, orderId })=>{
                             children: loading ? 'Processing...' : 'Proceed to Payment'
                         }, void 0, false, {
                             fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                            lineNumber: 367,
+                            lineNumber: 358,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                        lineNumber: 366,
+                        lineNumber: 357,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-                lineNumber: 240,
+                lineNumber: 231,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/(application)/checkout/[orderId]/Checkout.js",
-        lineNumber: 237,
+        lineNumber: 228,
         columnNumber: 5
     }, this);
 };
