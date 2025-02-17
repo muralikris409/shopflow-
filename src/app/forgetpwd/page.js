@@ -5,20 +5,25 @@ import React, { useState } from "react";
 const ForgotPasswordEmail = () => {
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-
+  const [loading,setLoading]=useState(false);
   const  handleSubmit =async () => {
+
     if (!email) {
       setError("Email is required.");
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
+    } else if (!/^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
       setError("Please enter a valid email address.");
     } else {
       setError("");
       try{
+        setLoading(true);
       await forgotPassword(email);
       }
       catch(err){
         console.log(err?.response?.data?.message)
         setError(err?.response?.data?.message||"Something went wrong")
+      }
+      finally{
+        setLoading(false);
       }
     }
   };
@@ -45,7 +50,7 @@ const ForgotPasswordEmail = () => {
         onClick={handleSubmit}
         className="w-full mt-4 bg-orange-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors"
       >
-        Submit
+       {loading?"Loading...": "Submit"}
       </button>
     </div>
   );

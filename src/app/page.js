@@ -1,6 +1,5 @@
 import { Carousel, CustomCarousel } from "./_components/Carousel";
 import ProductCard from "./_components/ProductCard";
-
 import ProductCarousel from "./_components/ProductCarousel";
 import {getClearanceSaleProducts, getFlashDeals, getLimitedTimeOffers, getProducts, getTrendingProducts } from "./_service/ProductService";
 import Deals from "./_components/Deals";
@@ -14,7 +13,6 @@ export default async function Home()  {
   try { 
     products = await getProducts(1);
   } catch (err) {
-  
     console.log(err)
   }
   products=products.data;
@@ -35,12 +33,7 @@ export default async function Home()  {
 <div className="flex flex-col lg:flex-row">
 <Deals title={"Flash Deals"} fetchData={getFlashDeals}/>
 <Deals title={"Trending Products"} fetchData={getTrendingProducts}/>
-        
 </div>
-
-
-
-
       <ProductCarousel title={"Picks for you"} href={"/products"}>
   {products && products?.length > 0 ? ( 
     products.slice(0, 10).map((product, i) => (
@@ -52,8 +45,7 @@ export default async function Home()  {
 </ProductCarousel>
 <div className="flex flex-col lg:flex-row">
 <Deals title={"Limited Time Offers"} fetchData={getLimitedTimeOffers}/>
-<Deals title={"Clearance Sale"} fetchData={getClearanceSaleProducts}/>
-        
+<Deals title={"Clearance Sale"} fetchData={getClearanceSaleProducts}/> 
 </div>
 <ViewAllProductsButton/>
     </>

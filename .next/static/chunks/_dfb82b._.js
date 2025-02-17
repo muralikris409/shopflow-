@@ -1,4 +1,4 @@
-(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_2969c7._.js", {
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push(["static/chunks/_dfb82b._.js", {
 
 "[project]/src/app/_service/UserService.js [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
@@ -253,7 +253,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
 }}),
-"[project]/src/app/(application)/user/_ProfileSections/manage/page.js [app-client] (ecmascript)": ((__turbopack_context__) => {
+"[project]/src/app/forgetpwd/page.js [app-client] (ecmascript)": ((__turbopack_context__) => {
 "use strict";
 
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
@@ -262,360 +262,112 @@ __turbopack_esm__({
     "default": (()=>__TURBOPACK__default__export__)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$UserService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/_service/UserService.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_lib$2f$userReducer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/_lib/userReducer.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$toast$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/hooks/use-toast.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-redux/dist/react-redux.mjs [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 ;
 var _s = __turbopack_refresh__.signature();
 "use client";
 ;
 ;
-;
-;
-;
-const EditProfile = ()=>{
+const ForgotPasswordEmail = ()=>{
     _s();
-    const dispatch = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"])();
-    const userData = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"])({
-        "EditProfile.useSelector[userData]": (state)=>state?.userData
-    }["EditProfile.useSelector[userData]"]);
-    const user = userData?.user;
-    const token = userData?.token;
-    const userId = user?.id;
-    const [fieldData, setFieldData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
-        name: user?.name || "",
-        phone: user?.phone || ""
-    });
-    const [imagePreview, setImagePreview] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(user?.profile_pic || null);
+    const [email, setEmail] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
+    const [error, setError] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])("");
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [errors, setErrors] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({});
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "EditProfile.useEffect": ()=>{
-            if (user) {
-                setImagePreview(user.profile_pic || null);
-                setFieldData({
-                    name: user.name || "",
-                    phone: user.phone || ""
-                });
-            }
-        }
-    }["EditProfile.useEffect"], [
-        userData
-    ]);
-    const validateFields = ()=>{
-        const phoneRegex = /^[6-9]\d{9}$/;
-        let newErrors = {};
-        if (!fieldData.name.trim()) newErrors.name = "Name is required.";
-        console.log(fieldData?.name?.length);
-        if (fieldData.name?.length >= 18) newErrors.name = "Name should be less than 18 characters.";
-        if (!phoneRegex.test(fieldData.phone)) newErrors.phone = "Phone number must be 10 digits and start with 6, 7, 8, or 9.";
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
-    const handleImageChange = (e)=>{
-        const file = e.target.files[0];
-        if (file && file.type.startsWith("image/")) {
-            const reader = new FileReader();
-            reader.onloadend = ()=>setImagePreview(reader.result);
-            reader.readAsDataURL(file);
+    const handleSubmit = async ()=>{
+        if (!email) {
+            setError("Email is required.");
+        } else if (!/^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+            setError("Please enter a valid email address.");
         } else {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$toast$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"])({
-                title: "Invalid file type",
-                description: "Please upload an image.",
-                variant: "destructive"
-            });
-        }
-    };
-    const handleChange = (e)=>{
-        const { name, value } = e.target;
-        setFieldData((prevData)=>({
-                ...prevData,
-                [name]: value
-            }));
-    };
-    const handleSubmit = async (e)=>{
-        e.preventDefault();
-        if (!validateFields()) return;
-        setLoading(true);
-        const formData = new FormData();
-        formData.append("name", fieldData.name);
-        formData.append("phone", fieldData.phone);
-        const profileImage = e.target.profileImage.files[0];
-        if (profileImage) {
-            formData.append("profile", profileImage);
-        }
-        try {
-            const response = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$UserService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["updateProfileInfo"])(token, userId, formData);
-            if (response.status === 200) {
-                (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$toast$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"])({
-                    title: "Success",
-                    description: "Profile updated successfully!"
-                });
-                dispatch((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_lib$2f$userReducer$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchData"])(`/user/userProfileInfo?userId=${userId}`, token));
+            setError("");
+            try {
+                setLoading(true);
+                await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$UserService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["forgotPassword"])(email);
+            } catch (err) {
+                console.log(err?.response?.data?.message);
+                setError(err?.response?.data?.message || "Something went wrong");
+            } finally{
+                setLoading(false);
             }
-        } catch (error) {
-            (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$toast$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["toast"])({
-                title: "Error",
-                description: error.response?.data?.message || "An error occurred.",
-                variant: "destructive"
-            });
-        } finally{
-            setLoading(false);
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "w-full h-screen mx-auto p-2 md:p-4 bg-white rounded-lg shadow-md",
+        className: "w-full max-w-md mx-auto p-6 bg-white rounded-lg shadow-md m-10",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
-                className: "text-3xl font-semibold text-gray-800 mb-6",
-                children: "Edit Profile"
+                className: "text-2xl font-bold text-gray-800 text-center",
+                children: "Forgot Password"
             }, void 0, false, {
-                fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                lineNumber: 96,
+                fileName: "[project]/src/app/forgetpwd/page.js",
+                lineNumber: 33,
                 columnNumber: 7
             }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
-                onSubmit: handleSubmit,
-                encType: "multipart/form-data",
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                className: "text-sm text-gray-600 text-center mt-2",
+                children: "Enter your email address to receive a reset link."
+            }, void 0, false, {
+                fileName: "[project]/src/app/forgetpwd/page.js",
+                lineNumber: 34,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: "mt-4",
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex flex-col items-center mb-6 relative",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "w-24 h-24 rounded-full overflow-hidden bg-gray-200 flex items-center justify-center relative group",
-                            children: [
-                                imagePreview ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                                    src: imagePreview,
-                                    alt: "Profile",
-                                    className: "w-full h-full object-cover"
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                    lineNumber: 102,
-                                    columnNumber: 15
-                                }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                    className: "text-3xl font-bold text-gray-500",
-                                    children: user?.name?.charAt(0)
-                                }, void 0, false, {
-                                    fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                    lineNumber: 104,
-                                    columnNumber: 15
-                                }, this),
-                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "absolute inset-0 bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer rounded-full",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "text-white px-3 py-1 rounded-md text-sm shadow-md",
-                                            children: "Edit ✎"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 107,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                            type: "file",
-                                            name: "profileImage",
-                                            accept: "image/*",
-                                            onChange: handleImageChange,
-                                            className: "hidden"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 108,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                    lineNumber: 106,
-                                    columnNumber: 13
-                                }, this)
-                            ]
-                        }, void 0, true, {
-                            fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                            lineNumber: 100,
-                            columnNumber: 11
-                        }, this)
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
+                        type: "email",
+                        className: `w-full px-4 py-2 border ${error ? "border-red-500" : "border-gray-300"} rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500`,
+                        placeholder: "Enter your email",
+                        value: email,
+                        onChange: (e)=>setEmail(e.target.value)
                     }, void 0, false, {
-                        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                        lineNumber: 99,
+                        fileName: "[project]/src/app/forgetpwd/page.js",
+                        lineNumber: 38,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "grid grid-cols-1 gap-4 md:grid-cols-2",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "mb-4",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                        htmlFor: "name",
-                                        className: "block text-sm font-medium text-gray-700",
-                                        children: "Name"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 115,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                        type: "text",
-                                        id: "name",
-                                        name: "name",
-                                        onChange: handleChange,
-                                        value: fieldData.name,
-                                        className: "mt-1 p-2 w-full border border-gray-300 rounded-md",
-                                        required: true
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 116,
-                                        columnNumber: 13
-                                    }, this),
-                                    errors.name && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-red-500 text-sm",
-                                        children: errors.name
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 125,
-                                        columnNumber: 29
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                lineNumber: 114,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "mb-4 relative",
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "group",
-                                    children: [
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                            htmlFor: "phone",
-                                            className: "block text-sm font-medium text-gray-700",
-                                            children: "Email"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 130,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                            type: "email",
-                                            id: "email",
-                                            name: "email",
-                                            value: user?.email,
-                                            className: "mt-1 p-2 w-full border border-gray-300 rounded-md bg-gray-100",
-                                            disabled: true,
-                                            placeholder: "Email"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 131,
-                                            columnNumber: 15
-                                        }, this),
-                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                            className: "absolute right-2 top-2 text-gray-500 text-xs hidden group-hover:block bg-gray-200 px-2 py-1 rounded-md",
-                                            children: "Email can't be changed"
-                                        }, void 0, false, {
-                                            fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                            lineNumber: 140,
-                                            columnNumber: 15
-                                        }, this)
-                                    ]
-                                }, void 0, true, {
-                                    fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                    lineNumber: 129,
-                                    columnNumber: 13
-                                }, this)
-                            }, void 0, false, {
-                                fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                lineNumber: 128,
-                                columnNumber: 11
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "mb-4",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                        htmlFor: "phone",
-                                        className: "block text-sm font-medium text-gray-700",
-                                        children: "Phone"
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 147,
-                                        columnNumber: 13
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                        type: "text",
-                                        id: "phone",
-                                        name: "phone",
-                                        onChange: handleChange,
-                                        value: fieldData.phone,
-                                        className: "mt-1 p-2 w-full border border-gray-300 rounded-md",
-                                        required: true
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 148,
-                                        columnNumber: 13
-                                    }, this),
-                                    errors.phone && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                        className: "text-red-500 text-sm",
-                                        children: errors.phone
-                                    }, void 0, false, {
-                                        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                        lineNumber: 157,
-                                        columnNumber: 30
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                                lineNumber: 146,
-                                columnNumber: 11
-                            }, this)
-                        ]
-                    }, void 0, true, {
-                        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                        lineNumber: 113,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "text-center mt-6",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-                            type: "submit",
-                            className: "bg-orange-500 text-white px-6 py-2 rounded-md hover:bg-orange-600 transition-colors",
-                            disabled: loading,
-                            children: loading ? "Saving..." : "Save Changes"
-                        }, void 0, false, {
-                            fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                            lineNumber: 162,
-                            columnNumber: 11
-                        }, this)
+                    error && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-red-500 text-sm mt-1",
+                        children: error
                     }, void 0, false, {
-                        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                        lineNumber: 161,
-                        columnNumber: 9
+                        fileName: "[project]/src/app/forgetpwd/page.js",
+                        lineNumber: 47,
+                        columnNumber: 19
                     }, this)
                 ]
             }, void 0, true, {
-                fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-                lineNumber: 98,
+                fileName: "[project]/src/app/forgetpwd/page.js",
+                lineNumber: 37,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                onClick: handleSubmit,
+                className: "w-full mt-4 bg-orange-500 text-white py-2 rounded-lg hover:bg-blue-600 transition-colors",
+                children: loading ? "Loading..." : "Submit"
+            }, void 0, false, {
+                fileName: "[project]/src/app/forgetpwd/page.js",
+                lineNumber: 49,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
-        fileName: "[project]/src/app/(application)/user/_ProfileSections/manage/page.js",
-        lineNumber: 95,
+        fileName: "[project]/src/app/forgetpwd/page.js",
+        lineNumber: 32,
         columnNumber: 5
     }, this);
 };
-_s(EditProfile, "gAKZYz/cvwcnxwUarYzy66BcsY8=", false, function() {
-    return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useDispatch"],
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$redux$2f$dist$2f$react$2d$redux$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useSelector"]
-    ];
-});
-_c = EditProfile;
-const __TURBOPACK__default__export__ = EditProfile;
+_s(ForgotPasswordEmail, "muz3bnJ0xbA57smfwlfHQ3Xysfc=");
+_c = ForgotPasswordEmail;
+const __TURBOPACK__default__export__ = ForgotPasswordEmail;
 var _c;
-__turbopack_refresh__.register(_c, "EditProfile");
+__turbopack_refresh__.register(_c, "ForgotPasswordEmail");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
+}}),
+"[project]/src/app/forgetpwd/page.js [app-rsc] (ecmascript, Next.js server component, client modules)": ((__turbopack_context__) => {
+
+var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, t: __turbopack_require_real__ } = __turbopack_context__;
+{
 }}),
 "[project]/node_modules/nookies/node_modules/cookie/index.js [app-client] (ecmascript)": (function(__turbopack_context__) {
 
@@ -1174,4 +926,4 @@ exports.destroyCookie = destroyCookie;
 }}),
 }]);
 
-//# sourceMappingURL=_2969c7._.js.map
+//# sourceMappingURL=_dfb82b._.js.map

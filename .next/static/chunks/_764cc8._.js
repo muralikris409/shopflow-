@@ -481,7 +481,7 @@ const AuthForm = ()=>{
             if (!formData[field]) {
                 validationErrors[field] = `${field.charAt(0).toUpperCase() + field.slice(1)} is required`;
             } else if (field === "email") {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                const emailRegex = /^[a-zA-Z0-9][a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                 if (!emailRegex.test(formData[field])) {
                     validationErrors[field] = "Invalid email format";
                 }

@@ -33,11 +33,14 @@ const EditProfile = () => {
   }, [userData]);
 
   const validateFields = () => {
+    const phoneRegex = /^[6-9]\d{9}$/;
+
     let newErrors = {};
     if (!fieldData.name.trim()) newErrors.name = "Name is required.";
-    if (fieldData.name?.length>16) newErrors.name = "Name should be less than 18 characters.";
-    if (!/^\d{10}$/.test(fieldData.phone))
-      newErrors.phone = "Phone number must be 10 digits.";
+    console.log(fieldData?.name?.length)
+    if (fieldData.name?.length>=18) newErrors.name = "Name should be less than 18 characters.";
+  if (!phoneRegex.test(fieldData.phone))
+    newErrors.phone = "Phone number must be 10 digits and start with 6, 7, 8, or 9.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;

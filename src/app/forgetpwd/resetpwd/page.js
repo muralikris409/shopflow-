@@ -23,16 +23,20 @@ const ResetPasswordComponent = () => {
   const token = searchQuery.get("token");
 
   const handleSubmit = async () => {
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+
     if (!password || !confirmPassword) {
       setError("All fields are required.");
       setSuccess("");
-    } else if (password.length < 8) {
-      setError("Password must be at least 8 characters long.");
+    } else if (!passwordRegex.test(password)) {
+      setError("Password must be at least 8 characters long and include an uppercase letter, a lowercase letter, a number, and a special symbol.");
       setSuccess("");
     } else if (password !== confirmPassword) {
       setError("Passwords do not match.");
       setSuccess("");
     } else {
+      console.log(passwordRegex.test(password))
+      
       setError("");
       try {
         const response = await resetPassword(token, password);
@@ -44,11 +48,13 @@ const ResetPasswordComponent = () => {
           setSuccess("");
         }
       } catch (err) {
-        setError("Failed to reset password. Please try again later.");
+        console.log(err.response)
+        setError(err?.response?.data?.message||"Failed to reset password. Please try again later.");
         setSuccess("");
       }
     }
-  };
+};
+
 
   return (
     <div className="w-full max-w-md mx-auto p-8 bg-white rounded-lg shadow-lg m-10">
