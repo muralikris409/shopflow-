@@ -586,6 +586,15 @@ const AddressManagement = ()=>{
         if (!newAddress.city.trim()) newErrors.city = "City is required.";
         if (!newAddress.state.trim()) newErrors.state = "State is required.";
         if (!newAddress.country.trim()) newErrors.country = "Country is required.";
+        if (!newAddress.city.trim() || !/^[A-Za-z\s]+$/.test(newAddress.city)) {
+            newErrors.city = "Invalid city";
+        }
+        if (!newAddress.state.trim() || !/^[A-Za-z\s]+$/.test(newAddress.state)) {
+            newErrors.state = "Invalid State";
+        }
+        if (!newAddress.country.trim() || !/^[A-Za-z\s]+$/.test(newAddress.country)) {
+            newErrors.country = "Invalid Country";
+        }
         if (!newAddress.zip.trim() || !/^[0-9]{5,6}$/.test(newAddress.zip)) {
             newErrors.zip = "ZIP Code must be 5-6 digits.";
         }
@@ -729,12 +738,12 @@ const AddressManagement = ()=>{
                 children: "Manage Address"
             }, void 0, false, {
                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                lineNumber: 209,
+                lineNumber: 224,
                 columnNumber: 7
             }, this),
             loading ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_components$2f$Loader$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Loader"], {}, void 0, false, {
                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                lineNumber: 211,
+                lineNumber: 226,
                 columnNumber: 9
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 className: "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6",
@@ -748,12 +757,12 @@ const AddressManagement = ()=>{
                                         children: address.street
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                        lineNumber: 222,
+                                        lineNumber: 237,
                                         columnNumber: 7
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                    lineNumber: 221,
+                                    lineNumber: 236,
                                     columnNumber: 5
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -768,7 +777,7 @@ const AddressManagement = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                            lineNumber: 227,
+                                            lineNumber: 242,
                                             columnNumber: 7
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -780,7 +789,7 @@ const AddressManagement = ()=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                            lineNumber: 230,
+                                            lineNumber: 245,
                                             columnNumber: 7
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -788,13 +797,13 @@ const AddressManagement = ()=>{
                                             children: address.isPrimary ? "Primary Address" : ""
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                            lineNumber: 233,
+                                            lineNumber: 248,
                                             columnNumber: 7
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                    lineNumber: 226,
+                                    lineNumber: 241,
                                     columnNumber: 5
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -808,7 +817,7 @@ const AddressManagement = ()=>{
                                                 children: "Set as Default"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 244,
+                                                lineNumber: 259,
                                                 columnNumber: 11
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -824,12 +833,12 @@ const AddressManagement = ()=>{
                                                     size: 16
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                    lineNumber: 259,
+                                                    lineNumber: 274,
                                                     columnNumber: 11
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 251,
+                                                lineNumber: 266,
                                                 columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -839,29 +848,29 @@ const AddressManagement = ()=>{
                                                     size: 16
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                    lineNumber: 265,
+                                                    lineNumber: 280,
                                                     columnNumber: 11
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 261,
+                                                lineNumber: 276,
                                                 columnNumber: 9
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                        lineNumber: 242,
+                                        lineNumber: 257,
                                         columnNumber: 7
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                    lineNumber: 241,
+                                    lineNumber: 256,
                                     columnNumber: 5
                                 }, this)
                             ]
                         }, address.id, true, {
                             fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                            lineNumber: 215,
+                            lineNumber: 230,
                             columnNumber: 5
                         }, this)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -873,13 +882,13 @@ const AddressManagement = ()=>{
                         children: "+ Add New Address"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                        lineNumber: 271,
+                        lineNumber: 286,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                lineNumber: 213,
+                lineNumber: 228,
                 columnNumber: 9
             }, this),
             showForm && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -893,12 +902,12 @@ const AddressManagement = ()=>{
                                 children: editAddressId ? "Edit Address" : "Add New Address"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                lineNumber: 287,
+                                lineNumber: 302,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                            lineNumber: 286,
+                            lineNumber: 301,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$card$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CardContent"], {
@@ -911,7 +920,7 @@ const AddressManagement = ()=>{
                                                 children: "Street"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 294,
+                                                lineNumber: 309,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -925,7 +934,7 @@ const AddressManagement = ()=>{
                                                 className: errors.street ? "border-red-500" : ""
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 295,
+                                                lineNumber: 310,
                                                 columnNumber: 19
                                             }, this),
                                             errors.street && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -933,13 +942,13 @@ const AddressManagement = ()=>{
                                                 children: errors.street
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 302,
+                                                lineNumber: 317,
                                                 columnNumber: 37
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                        lineNumber: 293,
+                                        lineNumber: 308,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -948,7 +957,7 @@ const AddressManagement = ()=>{
                                                 children: "City"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 305,
+                                                lineNumber: 320,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -962,7 +971,7 @@ const AddressManagement = ()=>{
                                                 className: errors.city ? "border-red-500" : ""
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 306,
+                                                lineNumber: 321,
                                                 columnNumber: 19
                                             }, this),
                                             errors.city && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -970,13 +979,13 @@ const AddressManagement = ()=>{
                                                 children: errors.city
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 313,
+                                                lineNumber: 328,
                                                 columnNumber: 35
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                        lineNumber: 304,
+                                        lineNumber: 319,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -985,7 +994,7 @@ const AddressManagement = ()=>{
                                                 children: "State"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 316,
+                                                lineNumber: 331,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -999,7 +1008,7 @@ const AddressManagement = ()=>{
                                                 className: errors.state ? "border-red-500" : ""
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 317,
+                                                lineNumber: 332,
                                                 columnNumber: 19
                                             }, this),
                                             errors.state && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1007,13 +1016,13 @@ const AddressManagement = ()=>{
                                                 children: errors.state
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 324,
+                                                lineNumber: 339,
                                                 columnNumber: 36
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                        lineNumber: 315,
+                                        lineNumber: 330,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1022,7 +1031,7 @@ const AddressManagement = ()=>{
                                                 children: "Country"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 327,
+                                                lineNumber: 342,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1036,7 +1045,7 @@ const AddressManagement = ()=>{
                                                 className: errors.country ? "border-red-500" : ""
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 328,
+                                                lineNumber: 343,
                                                 columnNumber: 19
                                             }, this),
                                             errors.country && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1044,13 +1053,13 @@ const AddressManagement = ()=>{
                                                 children: errors.country
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 335,
+                                                lineNumber: 350,
                                                 columnNumber: 38
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                        lineNumber: 326,
+                                        lineNumber: 341,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1059,7 +1068,7 @@ const AddressManagement = ()=>{
                                                 children: "ZIP Code"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 338,
+                                                lineNumber: 353,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
@@ -1073,7 +1082,7 @@ const AddressManagement = ()=>{
                                                 className: errors.zip ? "border-red-500" : ""
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 339,
+                                                lineNumber: 354,
                                                 columnNumber: 19
                                             }, this),
                                             errors.zip && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1081,13 +1090,13 @@ const AddressManagement = ()=>{
                                                 children: errors.zip
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 346,
+                                                lineNumber: 361,
                                                 columnNumber: 34
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                        lineNumber: 337,
+                                        lineNumber: 352,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1102,7 +1111,7 @@ const AddressManagement = ()=>{
                                                     })
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 349,
+                                                lineNumber: 364,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$label$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Label"], {
@@ -1110,13 +1119,13 @@ const AddressManagement = ()=>{
                                                 children: "Set as Primary"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 356,
+                                                lineNumber: 371,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                        lineNumber: 348,
+                                        lineNumber: 363,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1129,7 +1138,7 @@ const AddressManagement = ()=>{
                                                 children: editAddressId ? "Update Address" : "Save"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 359,
+                                                lineNumber: 374,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$jsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -1142,41 +1151,41 @@ const AddressManagement = ()=>{
                                                 children: "Cancel"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                                lineNumber: 366,
+                                                lineNumber: 381,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                        lineNumber: 358,
+                                        lineNumber: 373,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                                lineNumber: 292,
+                                lineNumber: 307,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                            lineNumber: 291,
+                            lineNumber: 306,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                    lineNumber: 285,
+                    lineNumber: 300,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-                lineNumber: 284,
+                lineNumber: 299,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/app/(application)/user/_ProfileSections/address/page.js",
-        lineNumber: 208,
+        lineNumber: 223,
         columnNumber: 5
     }, this);
 };

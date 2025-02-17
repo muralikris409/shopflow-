@@ -61,12 +61,27 @@ const AddressManagement = () => {
     if (!newAddress.city.trim()) newErrors.city = "City is required.";
     if (!newAddress.state.trim()) newErrors.state = "State is required.";
     if (!newAddress.country.trim()) newErrors.country = "Country is required.";
+  
+    if (!newAddress.city.trim() || !/^[A-Za-z\s]+$/.test(newAddress.city)) {
+      newErrors.city = "Invalid city";
+    }
+  
+    if (!newAddress.state.trim() || !/^[A-Za-z\s]+$/.test(newAddress.state)) {
+      newErrors.state = "Invalid State";
+    }
+  
+    if (!newAddress.country.trim() || !/^[A-Za-z\s]+$/.test(newAddress.country)) {
+      newErrors.country = "Invalid Country";
+    }
+  
     if (!newAddress.zip.trim() || !/^[0-9]{5,6}$/.test(newAddress.zip)) {
       newErrors.zip = "ZIP Code must be 5-6 digits.";
     }
+  
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
+  
 
   const handleAddAddress = async () => {
     if (!validateForm()) return;

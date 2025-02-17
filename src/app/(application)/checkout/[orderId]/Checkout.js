@@ -86,15 +86,32 @@ const OrderSummary = ({ title ,orderId}) => {
     if (!value?.trim()) {
       error = `${name.replace(/([A-Z])/g, ' $1')} is required.`;
     } else {
-      switch (name) {
-        case 'zip':
-          if (!/^[0-9]{5,6}$/.test(value)) {
-            error = 'ZIP code must be 5-6 digits.';
+      const validateField = (name, value) => {
+        let error = '';
+        if (!value?.trim()) {
+          error = `${name.replace(/([A-Z])/g, ' $1')} is required.`;
+        } else {
+          switch (name) {
+            case 'zip':
+              if (!/^[0-9]{5,6}$/.test(value)) {
+                error = 'ZIP code must be 5-6 digits.';
+              }
+              break;
+            case 'city':
+            case 'state':
+            case 'country':
+              if (!/^[A-Za-z\s]+$/.test(value)) {
+                error = `Invalid ${name.replace(/([A-Z])/g, ' $1')}`;
+              }
+              break;
+            default:
+              break;
           }
-          break;
-        default:
-          break;
-      }
+        }
+        setFormErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+        return !error;
+      };
+      
     }
     setFormErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
     return !error;
