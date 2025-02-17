@@ -1,5 +1,7 @@
 {
-  "/(application)/checkout/[orderId]/page": "app/(application)/checkout/[orderId]/page.js",
+  "/page": "app/page.js",
+  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/icon.png/route": "app/icon.png/route.js",
-  "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js"
+  "/(application)/product/[id]/page": "app/(application)/product/[id]/page.js",
+  "/_not-found/page": "app/_not-found/page.js"
 }

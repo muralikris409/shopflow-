@@ -90,6 +90,10 @@ export default function Product({ productId = 1 }) {
     };
 
     const handleAddorRemoveFromWishlist = async () => {
+         if(!isLoggedIn){
+            showMessage("Login to add product to wishlist",'error');
+            return;
+         }
         setLoadingState(prev => ({ ...prev, wishlist: true }));
         console.log(product)
         try {
