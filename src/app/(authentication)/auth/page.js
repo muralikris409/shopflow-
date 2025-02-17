@@ -104,6 +104,7 @@ const AuthForm = () => {
         
         // await userCartService.migrateCart(response?.data?.id);
         setSuccess(response?.message || "Registration successful! Please sign in.");
+        setIsLogin(true);
       }
       setLoading(false);
     } catch (error) {

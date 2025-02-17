@@ -2,6 +2,6 @@
   "/page": "app/page.js",
   "/api/auth/[...nextauth]/route": "app/api/auth/[...nextauth]/route.js",
   "/icon.png/route": "app/icon.png/route.js",
-  "/(application)/product/[id]/page": "app/(application)/product/[id]/page.js",
-  "/_not-found/page": "app/_not-found/page.js"
+  "/(authentication)/auth/page": "app/(authentication)/auth/page.js",
+  "/forgetpwd/resetpwd/page": "app/forgetpwd/resetpwd/page.js"
 }

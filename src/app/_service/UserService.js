@@ -95,11 +95,10 @@ export async function resetPassword(token,password){
     try{
     const response=await axiosInstance.post(`user/resetPassword?token=${token}&newPassword=${password}`);
         return response;
-    console.log(response);
    
 }
 catch(err){
-    console.log(err);
+    throw err;
 }
 }
 export async function getProfileInfo(token,userId){

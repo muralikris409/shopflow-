@@ -1,6 +1,6 @@
 "use client";
 import { resetPassword } from "@/app/_service/UserService";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 import { Suspense } from 'react';
 
@@ -21,7 +21,7 @@ const ResetPasswordComponent = () => {
   const [success, setSuccess] = useState("");
   const searchQuery = useSearchParams();
   const token = searchQuery.get("token");
-
+  const router=useRouter();
   const handleSubmit = async () => {
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
 
@@ -40,15 +40,16 @@ const ResetPasswordComponent = () => {
       setError("");
       try {
         const response = await resetPassword(token, password);
-        if (response.status === 200) {
-          setSuccess("Your password has been reset successfully!");
+        if (response?.status === 200) {
+          setSuccess("Your password has been reset successfully!.Redirecting to login page....");
+          setTimeout(()=>router.push("/auth"),1000);
           setError("");
         } else {
-          setError(response.message || "An error occurred while resetting the password.");
+          setError(response?.message || "An error occurred while resetting the password.");
           setSuccess("");
         }
       } catch (err) {
-        console.log(err.response)
+        console.log(err);
         setError(err?.response?.data?.message||"Failed to reset password. Please try again later.");
         setSuccess("");
       }
