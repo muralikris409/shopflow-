@@ -15,7 +15,7 @@ const ProductTile = ({ product, onCancel, cancelLoading }) => {
   };
 
   const handleCancel = () => {
-    onCancel(product.orderId);
+    onCancel(product.orderId,product.productId);
   };
 
   return (
@@ -119,10 +119,10 @@ const OrderPage = () => {
     fetchOrders();
   }, []);
 
-  const handleCancelOrder = async (orderId) => {
+  const handleCancelOrder = async (orderId,productId) => {
     try {
       setCancelLoading(orderId);
-      await cancelOrder(orderId);
+      await cancelOrder(orderId,productId);
       const updatedProducts = products.map((product) =>
         product.orderId === orderId
           ? { ...product, status: "CANCELLED" }

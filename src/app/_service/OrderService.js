@@ -69,10 +69,10 @@ export const getOrderByUserId = async () => {
       throw new Error(error?.response?.data?.message || 'Error fetching user orders.');
     }
   };
-export const cancelOrder = async (orderId) => {
+export const cancelOrder = async (orderId,productId) => {
     console.log(orderId);
   try {
-    const response = await axiosInstance.put(`/user/order/cancelOrder?orderId=${orderId}`);
+    const response = await axiosInstance.put(`/user/order/cancelOrder?orderId=${orderId}&productId=${productId}`);
     return response.data;
   } catch (error) {
     console.error('Error cancelling order:', error);
