@@ -124,7 +124,7 @@ const OrderPage = () => {
       setCancelLoading(productId);
       await cancelOrder(orderId,productId);
       const updatedProducts = products.map((product) =>
-        product.orderId === orderId
+        product.productId === productId
           ? { ...product, status: "CANCELLED" }
           : product
       );
