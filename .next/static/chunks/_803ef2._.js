@@ -59,13 +59,10 @@ async function googleOAuth(data, ctx = null) {
         (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nookies$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setCookie"])(ctx, "shopflow_session", JSON.stringify({
             token
         }), {
-            maxAge: 30 * 24 * 60 * 60,
-            path: '/',
-            sameSite: 'lax'
+            maxAge: 30 * 24 * 60 * 60
         });
         return response.data;
     } catch (error) {
-        alert(error);
         throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
     }
 }

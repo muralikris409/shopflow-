@@ -283,10 +283,10 @@ const getOrderByUserId = async ()=>{
         throw new Error(error?.response?.data?.message || 'Error fetching user orders.');
     }
 };
-const cancelOrder = async (orderId)=>{
+const cancelOrder = async (orderId, productId)=>{
     console.log(orderId);
     try {
-        const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["axiosInstance"].put(`/user/order/cancelOrder?orderId=${orderId}`);
+        const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["axiosInstance"].put(`/user/order/cancelOrder?orderId=${orderId}&productId=${productId}`);
         return response.data;
     } catch (error) {
         console.error('Error cancelling order:', error);

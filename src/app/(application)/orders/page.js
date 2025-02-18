@@ -74,9 +74,9 @@ const ProductTile = ({ product, onCancel, cancelLoading }) => {
                 : "bg-red-500 hover:bg-red-600"
             }`}
             onClick={handleCancel}
-            disabled={cancelLoading === product.orderId}
+            disabled={cancelLoading === product.productId}
           >
-            {cancelLoading === product.orderId ? "Cancelling..." : "Cancel Order"}
+            {cancelLoading === product.productId ? "Cancelling..." : "Cancel Order"}
           </button>
         )}
       </div>
@@ -121,7 +121,7 @@ const OrderPage = () => {
 
   const handleCancelOrder = async (orderId,productId) => {
     try {
-      setCancelLoading(orderId);
+      setCancelLoading(productId);
       await cancelOrder(orderId,productId);
       const updatedProducts = products.map((product) =>
         product.orderId === orderId

@@ -79,10 +79,10 @@ const getOrderByUserId = async ()=>{
         throw new Error(error?.response?.data?.message || 'Error fetching user orders.');
     }
 };
-const cancelOrder = async (orderId)=>{
+const cancelOrder = async (orderId, productId)=>{
     console.log(orderId);
     try {
-        const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["axiosInstance"].put(`/user/order/cancelOrder?orderId=${orderId}`);
+        const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["axiosInstance"].put(`/user/order/cancelOrder?orderId=${orderId}&productId=${productId}`);
         return response.data;
     } catch (error) {
         console.error('Error cancelling order:', error);
@@ -190,7 +190,7 @@ const ProductTile = ({ product, onCancel, cancelLoading })=>{
         router.push(`/product/${product.productId}`);
     };
     const handleCancel = ()=>{
-        onCancel(product.orderId);
+        onCancel(product.orderId, product.productId);
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: "product-card p-5 bg-white rounded-lg shadow-lg mb-4 w-full sm:w-96 lg:w-full",
@@ -383,10 +383,10 @@ const OrderPage = ()=>{
             fetchOrders();
         }
     }["OrderPage.useEffect"], []);
-    const handleCancelOrder = async (orderId)=>{
+    const handleCancelOrder = async (orderId, productId)=>{
         try {
             setCancelLoading(orderId);
-            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$OrderService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cancelOrder"])(orderId);
+            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$OrderService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cancelOrder"])(orderId, productId);
             const updatedProducts = products.map((product)=>product.orderId === orderId ? {
                     ...product,
                     status: "CANCELLED"
