@@ -21,9 +21,9 @@ export default function Products(props) {
       try {
         let response;
         if (search) {
-          response = await getSearchedProduct(search);
+          response = await getSearchedProduct(search,currentPage);
         } else if (filter) {
-          response = await getFilteredProducts(filter);
+          response = await getFilteredProducts(filter,currentPage);
         } else {
           response = await getProducts(currentPage);
         }

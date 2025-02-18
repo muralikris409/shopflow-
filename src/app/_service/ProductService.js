@@ -1,7 +1,7 @@
 import React from 'react';
 import { axiosInstance as axios } from '../api/axios';
 
-export const getFilteredProducts = async (filters) => {
+export const getFilteredProducts = async (filters,page) => {
     console.log(filters);
     try {
         const response = await axios.get('/products/filteredProducts', {
@@ -9,6 +9,7 @@ export const getFilteredProducts = async (filters) => {
                 categoryName: filters?.selectedCategory,
                 subCategoryNames: filters?.selectedSubcategories,
                 sort: filters?.sortOption,
+                page
             },
         });
         return response.data;
@@ -112,10 +113,10 @@ export async function getProductByID(id) {
     }
 }
 
-export async function getSearchedProduct(query) {
+export async function getSearchedProduct(query,page) {
     try {
         const products = await axios.get("/products/getProductBySearch", {
-            params: { query: query },
+            params: { query: query,page },
         });
         return products.data;
     } catch (err) {
