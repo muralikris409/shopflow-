@@ -67,7 +67,7 @@ async function googleOAuth(data) {
 }
 async function OAuth() {
     try {
-        window.location.href = "http://192.168.0.114:5000/auth/google";
+        window.location.href = `${"TURBOPACK compile-time value", "https://shopflow-new.onrender.com"}/user/google`;
     } catch (error) {
         console.log(JSON.stringify(error));
         throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");

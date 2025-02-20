@@ -44,9 +44,8 @@ export async function googleOAuth(data) {
     }
 }
 export async function OAuth() {
-  try {
-   
-    window.location.href = "http://192.168.0.114:5000/auth/google"; 
+  try { 
+    window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/user/google`;
   } catch (error) {
     console.log(JSON.stringify(error));
       throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
