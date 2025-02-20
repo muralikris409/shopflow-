@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { getSession, signIn, useSession } from "next-auth/react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-import { googleOAuth, login, signUp } from "@/app/_service/UserService";
+import { googleOAuth, login, OAuth, signUp } from "@/app/_service/UserService";
 import Link from "next/link";
 import UserCartService from "@/app/_service/UserCartService";
 import { parseCookies } from 'nookies';
@@ -106,11 +106,12 @@ const AuthForm = () => {
 
   const handleGoogleLogin = async () => {
     try {
-   
-    await signIn("google", { redirect: false });
-    await googleOAuth(token.token);
-    router.push("/");
-    router.refresh();
+      await OAuth();
+
+    // await signIn("google", { redirect: false });
+    // await googleOAuth(token.token);
+    // router.push("/");
+    // router.refresh();
     } catch (error) {
       console.error("Google login error:", error);
       setErrors({ form:error.message|| "An unexpected error occurred. Please try again." });

@@ -6,6 +6,7 @@
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: __turbopack_require_stub__ } = __turbopack_context__;
 {
 __turbopack_esm__({
+    "OAuth": (()=>OAuth),
     "addAddress": (()=>addAddress),
     "fetchUserAddresses": (()=>fetchUserAddresses),
     "forgotPassword": (()=>forgotPassword),
@@ -49,16 +50,14 @@ async function login(formdata, ctx = null) {
         throw new Error(error.response.data.message || "An error occurred during login.");
     }
 }
-async function googleOAuth(data, ctx = null) {
+async function googleOAuth(data) {
     try {
         const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["axiosInstance"].post("user/oauth", {
             ...data,
             id: data.sub
         });
         const { token, data: user } = response.data;
-        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nookies$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setCookie"])(ctx, "shopflow_session", JSON.stringify({
-            token
-        }), {
+        (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$nookies$2f$dist$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["setCookie"])("shopflow_session", token, {
             maxAge: 30 * 24 * 60 * 60
         });
         return response.data;
@@ -66,6 +65,15 @@ async function googleOAuth(data, ctx = null) {
         throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
     }
 }
+async function OAuth() {
+    try {
+        window.location.href = "http://192.168.0.114:5000/auth/google";
+    } catch (error) {
+        console.log(JSON.stringify(error));
+        throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
+    }
+}
+_c = OAuth;
 async function signUp(formdata) {
     const { username: name, email, password } = formdata;
     try {
@@ -245,6 +253,8 @@ const removeAddress = async (token, userId, addressId)=>{
         };
     }
 };
+var _c;
+__turbopack_refresh__.register(_c, "OAuth");
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_refresh__.registerExports(module, globalThis.$RefreshHelpers$);
 }
@@ -520,12 +530,11 @@ const AuthForm = ()=>{
     };
     const handleGoogleLogin = async ()=>{
         try {
-            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2d$auth$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["signIn"])("google", {
-                redirect: false
-            });
-            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$UserService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["googleOAuth"])(token.token);
-            router.push("/");
-            router.refresh();
+            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$_service$2f$UserService$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["OAuth"])();
+        // await signIn("google", { redirect: false });
+        // await googleOAuth(token.token);
+        // router.push("/");
+        // router.refresh();
         } catch (error) {
             console.error("Google login error:", error);
             setErrors({
@@ -548,7 +557,7 @@ const AuthForm = ()=>{
                             children: "SIGN IN"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                            lineNumber: 126,
+                            lineNumber: 127,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -557,13 +566,13 @@ const AuthForm = ()=>{
                             children: "REGISTER"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                            lineNumber: 132,
+                            lineNumber: 133,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                    lineNumber: 125,
+                    lineNumber: 126,
                     columnNumber: 9
                 }, this),
                 errors.form && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -571,7 +580,7 @@ const AuthForm = ()=>{
                     children: errors.form
                 }, void 0, false, {
                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                    lineNumber: 142,
+                    lineNumber: 143,
                     columnNumber: 11
                 }, this),
                 success && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -579,7 +588,7 @@ const AuthForm = ()=>{
                     children: success
                 }, void 0, false, {
                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                    lineNumber: 149,
+                    lineNumber: 150,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
@@ -594,7 +603,7 @@ const AuthForm = ()=>{
                                     children: "Username"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 157,
+                                    lineNumber: 158,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -606,7 +615,7 @@ const AuthForm = ()=>{
                                     className: "border border-gray-300 rounded-lg p-2 w-full focus:ring-2 focus:ring-orange-500 focus:outline-none"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 160,
+                                    lineNumber: 161,
                                     columnNumber: 15
                                 }, this),
                                 errors.username && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -614,13 +623,13 @@ const AuthForm = ()=>{
                                     children: errors.username
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 168,
+                                    lineNumber: 169,
                                     columnNumber: 35
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                            lineNumber: 156,
+                            lineNumber: 157,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -631,7 +640,7 @@ const AuthForm = ()=>{
                                     children: "Email"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 173,
+                                    lineNumber: 174,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -643,7 +652,7 @@ const AuthForm = ()=>{
                                     className: "border border-gray-300 rounded-lg p-2 w-full focus:ring-2 focus:ring-orange-500 focus:outline-none"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 176,
+                                    lineNumber: 177,
                                     columnNumber: 13
                                 }, this),
                                 errors.email && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -651,13 +660,13 @@ const AuthForm = ()=>{
                                     children: errors.email
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 184,
+                                    lineNumber: 185,
                                     columnNumber: 30
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                            lineNumber: 172,
+                            lineNumber: 173,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -668,7 +677,7 @@ const AuthForm = ()=>{
                                     children: "Password"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 188,
+                                    lineNumber: 189,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -680,7 +689,7 @@ const AuthForm = ()=>{
                                     className: "border border-gray-300 rounded-lg p-2 w-full focus:ring-2 focus:ring-orange-500 focus:outline-none"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 191,
+                                    lineNumber: 192,
                                     columnNumber: 13
                                 }, this),
                                 errors.password && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -688,13 +697,13 @@ const AuthForm = ()=>{
                                     children: errors.password
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 199,
+                                    lineNumber: 200,
                                     columnNumber: 33
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                            lineNumber: 187,
+                            lineNumber: 188,
                             columnNumber: 11
                         }, this),
                         !isLogin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -705,7 +714,7 @@ const AuthForm = ()=>{
                                     children: "Confirm Password"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 204,
+                                    lineNumber: 205,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -717,7 +726,7 @@ const AuthForm = ()=>{
                                     className: "border border-gray-300 rounded-lg p-2 w-full focus:ring-2 focus:ring-orange-500 focus:outline-none"
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 207,
+                                    lineNumber: 208,
                                     columnNumber: 15
                                 }, this),
                                 errors.confirmPassword && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -725,13 +734,13 @@ const AuthForm = ()=>{
                                     children: errors.confirmPassword
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 215,
+                                    lineNumber: 216,
                                     columnNumber: 42
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                            lineNumber: 203,
+                            lineNumber: 204,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -740,13 +749,13 @@ const AuthForm = ()=>{
                             children: loading ? "loading" : isLogin ? "Sign in" : "Register"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                            lineNumber: 219,
+                            lineNumber: 220,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                    lineNumber: 154,
+                    lineNumber: 155,
                     columnNumber: 9
                 }, this),
                 isLogin && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -757,12 +766,12 @@ const AuthForm = ()=>{
                         children: "Forgot your password?"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(authentication)/auth/page.js",
-                        lineNumber: 229,
+                        lineNumber: 230,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                    lineNumber: 228,
+                    lineNumber: 229,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -773,7 +782,7 @@ const AuthForm = ()=>{
                             children: "Quick Access With"
                         }, void 0, false, {
                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                            lineNumber: 236,
+                            lineNumber: 237,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -791,7 +800,7 @@ const AuthForm = ()=>{
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("defs", {}, void 0, false, {
                                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                            lineNumber: 242,
+                                            lineNumber: 243,
                                             columnNumber: 7
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("g", {
@@ -813,7 +822,7 @@ const AuthForm = ()=>{
                                                             fill: "#FBBC05"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                                            lineNumber: 246,
+                                                            lineNumber: 247,
                                                             columnNumber: 13
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -822,7 +831,7 @@ const AuthForm = ()=>{
                                                             fill: "#EB4335"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                                            lineNumber: 247,
+                                                            lineNumber: 248,
                                                             columnNumber: 13
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -831,7 +840,7 @@ const AuthForm = ()=>{
                                                             fill: "#34A853"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                                            lineNumber: 248,
+                                                            lineNumber: 249,
                                                             columnNumber: 13
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("path", {
@@ -840,53 +849,53 @@ const AuthForm = ()=>{
                                                             fill: "#4285F4"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                                            lineNumber: 249,
+                                                            lineNumber: 250,
                                                             columnNumber: 13
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                                    lineNumber: 245,
+                                                    lineNumber: 246,
                                                     columnNumber: 11
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                                lineNumber: 244,
+                                                lineNumber: 245,
                                                 columnNumber: 9
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                            lineNumber: 243,
+                                            lineNumber: 244,
                                             columnNumber: 7
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                                    lineNumber: 241,
+                                    lineNumber: 242,
                                     columnNumber: 5
                                 }, this),
                                 "          "
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(authentication)/auth/page.js",
-                            lineNumber: 237,
+                            lineNumber: 238,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/app/(authentication)/auth/page.js",
-                    lineNumber: 235,
+                    lineNumber: 236,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/app/(authentication)/auth/page.js",
-            lineNumber: 124,
+            lineNumber: 125,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/(authentication)/auth/page.js",
-        lineNumber: 123,
+        lineNumber: 124,
         columnNumber: 5
     }, this);
 };

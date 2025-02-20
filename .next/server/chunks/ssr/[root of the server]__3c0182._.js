@@ -238,9 +238,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib
 ;
 const axiosInstance = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].create({
     //   baseURL: "http://192.168.242.35:5000", 
-    // baseURL: "http://192.168.0.114:5000",
-    // baseURL: "http://localhost:5000",
-    baseURL: ("TURBOPACK compile-time value", "https://shopflow-new.onrender.com")
+    baseURL: "http://192.168.0.114:5000"
 });
 axiosInstance.interceptors.request.use((config)=>{
     const session = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$js$2d$cookie$2f$dist$2f$js$2e$cookie$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].get("shopflow_session");
@@ -274,14 +272,15 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/api/axios.js [app-rsc] (ecmascript)");
 ;
 ;
-const getFilteredProducts = async (filters)=>{
+const getFilteredProducts = async (filters, page)=>{
     console.log(filters);
     try {
         const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["axiosInstance"].get('/products/filteredProducts', {
             params: {
                 categoryName: filters?.selectedCategory,
                 subCategoryNames: filters?.selectedSubcategories,
-                sort: filters?.sortOption
+                sort: filters?.sortOption,
+                page
             }
         });
         return response.data;
@@ -385,11 +384,12 @@ async function getProductByID(id) {
         throw new Error("Unable to fetch product details. Please try again later.");
     }
 }
-async function getSearchedProduct(query) {
+async function getSearchedProduct(query, page) {
     try {
         const products = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["axiosInstance"].get("/products/getProductBySearch", {
             params: {
-                query: query
+                query: query,
+                page
             }
         });
         return products.data;

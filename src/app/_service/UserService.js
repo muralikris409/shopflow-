@@ -26,7 +26,7 @@ export async function login(formdata, ctx = null) {
     }
 }
 
-export async function googleOAuth(data, ctx = null) {
+export async function googleOAuth(data) {
     try {
      
         const response = await axios.post("user/oauth", {
@@ -34,7 +34,7 @@ export async function googleOAuth(data, ctx = null) {
         });
         const { token, data: user } = response.data;
 
-        setCookie(ctx, "shopflow_session", JSON.stringify({ token }), {
+        setCookie("shopflow_session",  token , {
             maxAge: 30 * 24 * 60 * 60,
         });
 
@@ -43,6 +43,16 @@ export async function googleOAuth(data, ctx = null) {
         throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
     }
 }
+export async function OAuth() {
+  try {
+   
+    window.location.href = "http://192.168.0.114:5000/auth/google"; 
+  } catch (error) {
+    console.log(JSON.stringify(error));
+      throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
+  }
+}
+
 
 
 export async function signUp(formdata) {

@@ -506,14 +506,15 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/app/api/axios.js [app-ssr] (ecmascript)");
 ;
 ;
-const getFilteredProducts = async (filters)=>{
+const getFilteredProducts = async (filters, page)=>{
     console.log(filters);
     try {
         const response = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["axiosInstance"].get('/products/filteredProducts', {
             params: {
                 categoryName: filters?.selectedCategory,
                 subCategoryNames: filters?.selectedSubcategories,
-                sort: filters?.sortOption
+                sort: filters?.sortOption,
+                page
             }
         });
         return response.data;
@@ -617,11 +618,12 @@ async function getProductByID(id) {
         throw new Error("Unable to fetch product details. Please try again later.");
     }
 }
-async function getSearchedProduct(query) {
+async function getSearchedProduct(query, page) {
     try {
         const products = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$api$2f$axios$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["axiosInstance"].get("/products/getProductBySearch", {
             params: {
-                query: query
+                query: query,
+                page
             }
         });
         return products.data;
