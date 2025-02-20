@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/navigation';
-import { useSession, signOut } from 'next-auth/react';
 import Cookies from 'js-cookie';
 import { fetchData } from '@/app/_lib/userReducer';
 import { Button } from '@/components/ui/button';
@@ -16,7 +15,6 @@ import { Skeleton } from '@/components/ui/skeleton';
 export default function UserMenu() {
   const dispatch = useDispatch();
   const router = useRouter();
-  const { data: session } = useSession();
 
   const { user: userData, loading, error } = useSelector((state) => state.userData);
   console.log(userData, error);
@@ -39,7 +37,6 @@ export default function UserMenu() {
 
   const handleSignOut = async () => {
     try {
-      await signOut({ redirect: false });
       Cookies.remove('shopflow_session');
       router.refresh();
       router.replace(router.asPath);

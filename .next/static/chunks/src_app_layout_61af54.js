@@ -6,12 +6,12 @@
   "path": "static/chunks/src_app_layout_61af54.js",
   "chunks": [
     "static/chunks/[root of the server]__640589._.css",
-    "static/chunks/src_22c695._.js",
+    "static/chunks/src_e576de._.js",
     "static/chunks/node_modules_next_e7ae3d._.js",
     "static/chunks/node_modules_axios_lib_c4c49c._.js",
     "static/chunks/node_modules_react-icons_fa_index_mjs_d2e2d7._.js",
     "static/chunks/node_modules_react-icons_lib_74ccc9._.js",
-    "static/chunks/node_modules_d8a508._.js"
+    "static/chunks/node_modules_3b146a._.js"
   ],
   "source": "dynamic"
 });

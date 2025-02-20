@@ -1,34 +1,20 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { getSession, signIn, useSession } from "next-auth/react";
-import { useDispatch, useSelector } from "react-redux";
+import {  useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
-import { googleOAuth, login, OAuth, signUp } from "@/app/_service/UserService";
+import {  login, OAuth, signUp } from "@/app/_service/UserService";
 import Link from "next/link";
-import UserCartService from "@/app/_service/UserCartService";
-import { parseCookies } from 'nookies';
-import { fetchData } from "@/app/_lib/userReducer";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({});
   const [errors, setErrors] = useState({});
-  const userCartService = new UserCartService();
   const [success, setSuccess] = useState(null);
   const [loading, setLoading] = useState(false);
-  console.log(useSession());
-  const {data:token,status}=useSession();
-  console.log(token)
-  const dispatch = useDispatch();
   const historyRoute = useSelector(state => state?.utils?.history?.route);
   const router = useRouter();
 
-  const toggleForm = () => {
-    setIsLogin(!isLogin);
-    setFormData({});
-    setErrors({});
-    setSuccess(null);
-  };
+  
 
   const handleChange = (field, value) => {
     setFormData({ ...formData, [field]: value });
@@ -107,11 +93,6 @@ const AuthForm = () => {
   const handleGoogleLogin = async () => {
     try {
       await OAuth();
-
-    // await signIn("google", { redirect: false });
-    // await googleOAuth(token.token);
-    // router.push("/");
-    // router.refresh();
     } catch (error) {
       console.error("Google login error:", error);
       setErrors({ form:error.message|| "An unexpected error occurred. Please try again." });

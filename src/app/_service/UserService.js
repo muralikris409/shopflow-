@@ -26,23 +26,7 @@ export async function login(formdata, ctx = null) {
     }
 }
 
-export async function googleOAuth(data) {
-    try {
-     
-        const response = await axios.post("user/oauth", {
-            ...data,id:data.sub
-        });
-        const { token, data: user } = response.data;
 
-        setCookie("shopflow_session",  token , {
-            maxAge: 30 * 24 * 60 * 60,
-        });
-
-        return response.data;
-    } catch (error) {
-        throw new Error(error?.data?.response?.message || "An error occurred during Google OAuth.");
-    }
-}
 export async function OAuth() {
   try { 
     window.location.href = `${process.env.NEXT_PUBLIC_API_URL}/user/google`;
